@@ -7,6 +7,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { motion, AnimatePresence } from 'framer-motion';
+import NavAdmin from "./NavAdmin";
 
 
 
@@ -15,6 +16,7 @@ export default function Header() {
     const [isService, setIsService] = useState(false)
   return (
     <div>
+        <NavAdmin />
         {/* TOP */}
         <section className='w-[100%] bg-[#403d36] text-white'>
         <div className='mx-auto w-[90%] py-3 flex items-center justify-between '>

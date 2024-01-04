@@ -26,23 +26,27 @@ export default function Footer() {
             <h4 className="text-2xl font-extrabold mb-[1rem]">Navigation Links</h4>
             <ul className="text-sm pl-[1rem] flex flex-col justify-center items-start gap-2">
                 <li>
-                    <Link href='#' className="group flex items-center justify-start gap-2">
+                    <Link href='/about' className="group flex items-center justify-start gap-2">
                         <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
                         About Us</Link>
                 </li>
                 <li> 
-                    <Link href='#' className="group flex items-center justify-start gap-2">
+                    <Link href='/project' className="group flex items-center justify-start gap-2">
                         <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                        Our Projects</Link></li>
+                        My Account</Link></li>
                 <li> 
-                    <Link href='#' className="group flex items-center justify-start gap-2">
-                        <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                        Our Services</Link></li>
-                <li> 
-                    <Link href='#' className="group flex items-center justify-start gap-2">
+                    <Link href='/contact' className="group flex items-center justify-start gap-2">
                         <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
                         Contact Us</Link>
                 </li>
+                <li> 
+                    <Link href='/register' className="group flex items-center justify-start gap-2">
+                        <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
+                        Register</Link></li>
+                <li> 
+                    <Link href='/login' className="group flex items-center justify-start gap-2">
+                        <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
+                        Login</Link></li>
             </ul>
         </div>
         <div className="w-[30%]">

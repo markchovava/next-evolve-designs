@@ -15,7 +15,10 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
-    "swiper": "^11.0.5"
+    "slate": "^0.101.4",
+    "slate-react": "^0.101.3",
+    "swiper": "^11.0.5",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

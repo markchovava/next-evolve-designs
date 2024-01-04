@@ -1,0 +1,19 @@
+{
+    "thumbnail": File,
+    "name": "Test",
+    "description": "Something interesting",
+    "project_images": [
+        {
+            "priority": 1,
+            "image": File
+        },
+        {
+            "priority": 2,
+            "image": File
+        },
+        {
+            "priority": 3,
+            "image": File
+        }
+    ]
+}

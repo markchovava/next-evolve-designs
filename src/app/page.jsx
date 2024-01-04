@@ -1,3 +1,5 @@
+"use client"
+import { getToken } from "@/api/token";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -6,6 +8,8 @@ import { BsArrowRight } from 'react-icons/bs'
 
 
 export default function Home() {
+
+ 
   
   return (
    <>
