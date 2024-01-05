@@ -1,3 +1,4 @@
+import getAppInfo from '@/api/getAppInfo';
 import ContactForm from '@/components/ContactForm'
 import Footer from '@/components/Footer';
 import Header from '@/components/Header'
@@ -5,9 +6,11 @@ import Link from 'next/link'
 import { BsChevronRight } from "react-icons/bs";
 
 export default function page() {
+  const appInfo = getAppInfo()
+
   return (
     <div>
-       <Header />
+       <Header appInfo={appInfo} />
        {/* PAGE TITLE */}
        <section style={{backgroundImage: `url('/assets/img/header/02.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
         <div className='mx-auto w-[90%] flex items-center justify-center pt-[4rem] pb-[3rem]'>
@@ -37,7 +40,7 @@ export default function page() {
       <section className='w-[100%] h-[30rem] bg-slate-500 text-white items-center justify-center flex'>
           Google Maps
       </section>
-      <Footer />
+      <Footer appInfo={appInfo} />
     </div>
   )
 }

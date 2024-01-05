@@ -1,22 +1,22 @@
  import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { BsChevronRight } from "react-icons/bs";
-import { BsArrowRight } from 'react-icons/bs'
-import { FaUserGraduate } from 'react-icons/fa'
-import { GiFootTrip } from 'react-icons/gi'
 import Link from 'next/link'
 import { PiTargetBold } from "react-icons/pi";
 import { GoTelescope } from "react-icons/go";
 import { FaRegHandshake } from "react-icons/fa";
 import { GiWalkingBoot } from "react-icons/gi";
 import Team from './components/Team';
+import getAppInfo from '@/api/getAppInfo';
 
 
 
 export default function page() {
+  const appInfo = getAppInfo()
+  
   return (
     <div>
-      <Header />
+      <Header appInfo={appInfo} />
 
       {/* PAGE TITLE */}
        <section style={{backgroundImage: `url('/assets/img/header/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
@@ -126,7 +126,7 @@ export default function page() {
 
       <Team />
 
-      <Footer />
+      <Footer appInfo={appInfo} />
     </div>
   )
 }

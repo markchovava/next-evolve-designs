@@ -1,45 +1,20 @@
-"use client"
-
-import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
+import getAppInfo from '@/api/getAppInfo';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header'
 import Link from 'next/link'
-import { useEffect, useState } from 'react';
-import { BsArrowRight, BsChevronRight } from "react-icons/bs";
+import { BsChevronRight } from "react-icons/bs";
 
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 export default function page({ params: {id} }) {
-  const [data, setData] = useState({});
-
-  /* GET DATA */
-  async function getData() {
-    try{
-      const result = await AxiosClient.get(`role/${id}`, config)
-        .then((response) => {
-          setData(() => response.data.data)
-          console.log(response.data.data)   
-        })
-      } catch (error) {
-        console.error(`Error: ${error}`)
-      }   
-  } 
-
-  useEffect(() => { 
-      getData();
-  }, []);
+  const appInfo = getAppInfo()
 
 
   return (
     <div>
-       <Header />
+       <Header appInfo={appInfo} />
        {/* PAGE TITLE */}
        <section style={{backgroundImage: `url('/assets/img/header/02.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
         <div className='mx-auto w-[90%] flex items-center justify-center pt-[4rem] pb-[3rem]'>
@@ -58,24 +33,24 @@ export default function page({ params: {id} }) {
               </li>
               <li><BsChevronRight /></li>
               <li className='flex justify-start items-center'>
-                <Link href='/' className='font-semibold'>
+                <Link href='/' >
                   Admin</Link>
               </li>
               <li><BsChevronRight /></li>
               <li className='flex justify-start items-center'>
-                <Link href='/admin/role' className='font-semibold'>
+                <Link href='/admin/role' >
                   Role</Link>
               </li>
               <li><BsChevronRight /></li>
               <li className='flex justify-start items-center'>
-                <Link href='/admin/role/1' className='font-semibold'>
+                <Link href={`/admin/role/${id}`} className='font-semibold'>
                   View Role</Link>
               </li>
             </ul>
         </div>
       </section>
 
-      {/* FORM */}
+      {/* MAIN CONTENT */}
       <section className='w-[100%] h-auto bg-gray-50'>
         <div className="mx-auto w-[75%] py-[4rem]">
             {/* Title */}
@@ -124,7 +99,7 @@ export default function page({ params: {id} }) {
       </section>
 
     
-      <Footer />
+      <Footer appInfo={appInfo} />
     </div>
   )
 }

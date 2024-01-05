@@ -1,5 +1,4 @@
-"use client"
-import { getToken } from "@/api/token";
+import getAppInfo from "@/api/getAppInfo";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -7,13 +6,12 @@ import MainSlider from "@/components/MainSlider";
 import { BsArrowRight } from 'react-icons/bs'
 
 
-export default function Home() {
-
- 
+export default async function Home() {
+  const appInfo = getAppInfo()
   
   return (
    <>
-      <Header />
+      <Header appInfo={appInfo} />
       <MainSlider />
       {/* SECTION */}
       <section className='w-[100%] bg-[#403d36] text-white'>
@@ -160,7 +158,7 @@ export default function Home() {
       <ContactForm />
 
      {/* FOOTER */}
-     <Footer />
+    <Footer appInfo={appInfo} />
 
    </>
   )
