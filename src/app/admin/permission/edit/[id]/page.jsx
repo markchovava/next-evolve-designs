@@ -4,15 +4,20 @@ import Link from 'next/link'
 import { BsChevronRight } from "react-icons/bs";
 import PermissionEdit from './components/PermissionEdit';
 import getAppInfo from '@/api/getAppInfo';
+import getServices from '@/api/getServices';
 
 
 
 export default function page({ params: {id} }) {
   const appInfo = getAppInfo()
- 
+  const services = getServices()
+  const categories = getCategories()
+  
+
   return (
     <div>
-      <Header appInfo={appInfo} />
+        {/* HEADER */}
+       <Header appInfo={appInfo} services={services} categories={categories} />
 
       {/* PAGE TITLE */}
       <section style={{backgroundImage: `url('/assets/img/header/02.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>

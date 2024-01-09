@@ -31,8 +31,8 @@ export default function NavAdmin() {
                             setIsProfile(false);
                             setIsUser(false);
                         }} >
-                        <Link href='#' className="flex items-center justify-start gap-1 hover:text-slate-100">
-                            Settings <IoChevronDownSharp /></Link>
+                        <span href='#' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
+                            Settings <IoChevronDownSharp /></span>
                         {isSetting && 
                             <AnimatePresence>
                                 <motion.ul 
@@ -61,8 +61,8 @@ export default function NavAdmin() {
                             setIsProject(false);
                             setIsUser(!isUser);
                         }} >
-                        <Link href='' className="flex items-center justify-start gap-1 hover:text-slate-100">
-                            Users <IoChevronDownSharp /></Link>
+                        <span href='' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
+                            Users <IoChevronDownSharp /></span>
                             {isUser && 
                                 <AnimatePresence>
                                     <motion.ul 
@@ -90,8 +90,8 @@ export default function NavAdmin() {
                             setIsProfile(false);
                             setIsUser(false);
                         }}>
-                        <Link href='' className="flex items-center justify-start gap-1 hover:text-slate-100">
-                            Categories <IoChevronDownSharp /></Link>
+                        <span href='' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
+                            Categories <IoChevronDownSharp /></span>
                         {isCategory && 
                             <AnimatePresence>
                                 <motion.ul 
@@ -119,8 +119,8 @@ export default function NavAdmin() {
                             setIsProfile(false);
                             setIsUser(false);
                         }}>
-                        <Link href='' className="flex items-center justify-start gap-1 hover:text-slate-100">
-                            Types <IoChevronDownSharp /></Link>
+                        <span href='' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
+                            Types <IoChevronDownSharp /></span>
                         {isType && 
                             <AnimatePresence>
                                 <motion.ul 
@@ -150,8 +150,8 @@ export default function NavAdmin() {
                             setIsProfile(false);
                             setIsUser(false);
                         }}>
-                        <Link href='' className="flex items-center justify-start gap-1 hover:text-slate-100">
-                            Projects <IoChevronDownSharp /></Link>
+                        <span href='' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
+                            Projects <IoChevronDownSharp /></span>
                         {isProject && 
                             <AnimatePresence>
                                 <motion.ul 
@@ -179,8 +179,8 @@ export default function NavAdmin() {
                             setIsProfile(false);
                             setIsUser(false);
                         }} >
-                        <Link href='' className="flex items-center justify-start gap-1 hover:text-slate-100">
-                            Services <IoChevronDownSharp /></Link>
+                        <span href='' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
+                            Services <IoChevronDownSharp /></span>
                             {isService && 
                             <AnimatePresence>
                                 <motion.ul 
@@ -210,10 +210,10 @@ export default function NavAdmin() {
                             setIsProject(false);
                             setIsUser(false);
                         }} >
-                        <Link href='' className="flex items-center justify-start gap-1 hover:text-slate-100">
+                        <span href='' className="cursor-pointer flex items-center justify-start gap-1 hover:text-slate-100">
                             <FaUser />
                             Profile 
-                            <IoChevronDownSharp /></Link>
+                            <IoChevronDownSharp /></span>
                             {isProfile && 
                             <AnimatePresence>
                                 <motion.ul 

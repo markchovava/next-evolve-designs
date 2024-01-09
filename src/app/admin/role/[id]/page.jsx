@@ -1,4 +1,6 @@
 import getAppInfo from '@/api/getAppInfo';
+import getCategories from '@/api/getCategories';
+import getServices from '@/api/getServices';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header'
 import Link from 'next/link'
@@ -10,11 +12,14 @@ import { BsChevronRight } from "react-icons/bs";
 
 export default function page({ params: {id} }) {
   const appInfo = getAppInfo()
-
+  const services = getServices()
+  const categories = getCategories()
+  
 
   return (
     <div>
-       <Header appInfo={appInfo} />
+        {/* HEADER */}
+       <Header appInfo={appInfo} services={services} categories={categories} />
        {/* PAGE TITLE */}
        <section style={{backgroundImage: `url('/assets/img/header/02.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
         <div className='mx-auto w-[90%] flex items-center justify-center pt-[4rem] pb-[3rem]'>

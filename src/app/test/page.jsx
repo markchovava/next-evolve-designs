@@ -2,18 +2,24 @@ import getPermissions from "@/api/getPermissions";
 import TestComp from "./components/TestComp";
 import getAppInfo from "@/api/getAppInfo";
 import TestComp2 from "./components/TestComp2";
-import Header from "@/components/Header";
+import { getCookieToken, setCookieToken } from "@/api/tokenCookie";
 
 
 const page = () => {
-    const permissions = getPermissions()
-    const appInfo = getAppInfo()
+  const a = '1234567890'
+  setCookieToken(a)
+  const permissions = getPermissions()
+  const appInfo = getAppInfo()
+  //document.cookie = '1234567890'
+  const token = getCookieToken()
+  //console.log('cookieToken')
+  //console.log(cookieToken)
   
   return (
     <div>
-      <Header appInfo={appInfo} />
-      <TestComp appInfo={appInfo} permissions={permissions}/>
-      <TestComp2 permissions={permissions}/>
+      fgtjyttrb
+      {/* <TestComp appInfo={appInfo} permissions={permissions} token={token} />
+      <TestComp2 permissions={permissions}/> */}
     Texts
     </div>
   )

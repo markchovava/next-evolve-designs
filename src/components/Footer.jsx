@@ -6,15 +6,16 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaWhatsappSquare } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa";
+import { baseURL } from "@/api/baseURL";
 
-export default function Footer({ appInfo }) {
-    const appInfoData = appInfo && JSON.parse(appInfo.value)
+export default async function Footer({ appInfo }) {
+    const appInfoData = await JSON.parse(appInfo.value)
 
   return (
     <section className="w-[100%] h-auto bg-[#403d36] text-white">
         <div className="w-[90%] mx-auto py-[4rem] flex items-start justify-between">
         <div className="w-[20%] h-auto flex items-center justify-center flex-col gap-4">
-            <img src="/assets/img/logo_small.jpg" className="object-fill" alt="" />
+            <img src={baseURL + appInfoData.data.image} className="object-fill" alt="" />
             <ul className='flex items-center justify-start gap-3 text-2xl'>
                 <li><Link href={appInfoData.data.facebook} ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
                 <li><Link href={appInfoData.data.twitter}><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>

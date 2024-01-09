@@ -11,11 +11,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Pagination, Navigation} from 'swiper/modules';
 import Link from 'next/link';
+import { baseURL } from "@/api/baseURL";
 
 
 
 
-export default function Team() {
+export default async function Team({ users }) {
+    const usersData = await JSON.parse(users.value)
+
   return (
     <section className='w-[100%] bg-slate-50  pt-[4rem] pb-[5rem]'>
         <div className="mx-auto w-[80%] flex items-center justify-center flex-col">
@@ -34,67 +37,28 @@ export default function Team() {
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={swiper => console.log(swiper)}
                     className='rounded-lg'>
-                    <SwiperSlide>
-                    <div className='w-[100%] h-[25rem] rounded-xl border overflow-hidden bg-white border-white drop-shadow-xl'>
-                        <div className='w-[100%] h-[65%] bg-slate-600'></div>
-                        <div className='w-[100%] h-[65%] p-[1rem]'>
-                            <h4 className='text-black font-bold text-xl leading-none pb-1'>Name Surname</h4>
-                            <p className='italic pb-2'>Director</p>
-                            <ul className='flex items-center justify-start gap-3 text-2xl text-slate-700'>
-                                <li><Link href='#' ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                <li><Link href='#'><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                <li><Link href='#'><FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                <li><Link href='#'><FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                            </ul>
-                        </div>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                    <div className='w-[100%] h-[25rem] rounded-xl border overflow-hidden bg-white border-white drop-shadow-xl'>
-                        <div className='w-[100%] h-[65%] bg-slate-600'></div>
-                        <div className='w-[100%] h-[65%] p-[1rem]'>
-                            <h4 className='text-black font-bold text-xl leading-none pb-1'>Name Surname</h4>
-                            <p className='italic pb-2'>Director</p>
-                            <ul className='flex items-center justify-start gap-3 text-2xl text-slate-700'>
-                                <li><Link href='#' ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                <li><Link href='#'><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                <li><Link href='#'><FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                <li><Link href='#'><FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                            </ul>
-                        </div>
-                    </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className='w-[100%] h-[25rem] rounded-xl border overflow-hidden bg-white border-white drop-shadow-xl'>
-                            <div className='w-[100%] h-[65%] bg-slate-600'></div>
-                            <div className='w-[100%] h-[65%] p-[1rem]'>
-                                <h4 className='text-black font-bold text-xl leading-none pb-1'>Name Surname</h4>
-                                <p className='italic pb-2'>Director</p>
-                                <ul className='flex items-center justify-start gap-3 text-2xl text-slate-700'>
-                                    <li><Link href='#' ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                    <li><Link href='#'><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                    <li><Link href='#'><FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                    <li><Link href='#'><FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                </ul>
+                    {usersData.data.map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <div className='w-[100%] h-[25rem] rounded-xl border overflow-hidden bg-white border-white drop-shadow-xl'>
+                                <div className='w-[100%] h-[65%] bg-slate-600'>
+                                    <img src={baseURL + item.image} className="w-[100%] h-[100%]" />
+                                </div>
+                                <div className='w-[100%] h-[65%] p-[1rem]'>
+                                    <h4 className='text-black font-bold text-xl leading-none pb-1'>{item.name}</h4>
+                                    <p className='italic pb-2'>{item.profession}</p>
+                                    <p>{item.bio.slice(0,30)}</p>
+                                    <ul className='flex items-center justify-start gap-3 text-2xl text-slate-700'>
+                                       {/*  <li><Link href='#' ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                                        <li><Link href='#'><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                                        <li><Link href='#'><FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li> */}
+                                        <li><Link href='#'><FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className='w-[100%] h-[25rem] rounded-xl border overflow-hidden bg-white border-white drop-shadow-xl'>
-                            <div className='w-[100%] h-[65%] bg-slate-600'></div>
-                            <div className='w-[100%] h-[65%] p-[1rem]'>
-                                <h4 className='text-black font-bold text-xl leading-none pb-1'>Name Surname</h4>
-                                <p className='italic pb-2'>Director</p>
-                                <ul className='flex items-center justify-start gap-3 text-2xl text-slate-700'>
-                                    <li><Link href='#' ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                    <li><Link href='#'><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                    <li><Link href='#'><FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                    <li><Link href='#'><FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-               
+                        </SwiperSlide>
+                    ))}
+
+
                     
                 </Swiper>
             </div>

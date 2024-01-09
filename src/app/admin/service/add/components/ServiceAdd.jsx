@@ -3,6 +3,7 @@ import AxiosClient from '@/api/axiosClient';
 import { getToken } from '@/api/token';
 import { ServiceContextState } from '@/context/ServiceContext';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 
@@ -15,6 +16,7 @@ const config = {
 
 
 export default function ServiceAdd() {
+  const router = useRouter();
   const [isSubmit, setIsSubmit] = useState(false)
   const {serviceState, serviceDispatch,} = ServiceContextState()
   const [data, setData] = useState({})

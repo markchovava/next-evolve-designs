@@ -8,15 +8,23 @@ import { FaRegHandshake } from "react-icons/fa";
 import { GiWalkingBoot } from "react-icons/gi";
 import Team from './components/Team';
 import getAppInfo from '@/api/getAppInfo';
+import getServices from '@/api/getServices';
+import getCategories from '@/api/getCategories';
+import getUsers from '@/api/getUsers';
 
 
 
-export default function page() {
+export default async function page() {
+  const users = getUsers();
+  const categories = getCategories()
   const appInfo = getAppInfo()
+  const services = getServices()
   
+
   return (
     <div>
-      <Header appInfo={appInfo} />
+        {/* HEADER */}
+       <Header appInfo={appInfo} services={services} categories={categories}/>
 
       {/* PAGE TITLE */}
        <section style={{backgroundImage: `url('/assets/img/header/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
@@ -51,18 +59,22 @@ export default function page() {
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">About Us</h3>
               <hr className="border-t-4 border-black w-[20%] pb-[2rem]" />
               <p className="pb-[1.5rem]">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Expedita voluptatum exercitationem tempora facilis magnam quisquam est, 
-                veritatis cum eum tenetur. Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Expedita voluptatum exercitationem tempora facilis magnam quisquam est, 
-                veritatis cum eum tenetur.
+                Evolve Designs is a prominent architectural firm
+                specialising in modern, upmarket residential
+                architecture, including townhouses, and
+                commercial buildings such as offices and shopping
+                centres. The firm comprises a highly skilled team
+                that provides clients with designs that boast
+                ‘Synergy, Boldness and Excellence’.
+                
               </p>
               <p className="">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Expedita voluptatum exercitationem tempora facilis magnam quisquam est, 
-                veritatis cum eum tenetur. Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                Expedita voluptatum exercitationem tempora facilis magnam quisquam est, 
-                veritatis cum eum tenetur.
+                It’s about design that lasts, where function
+                meets art in a building that is both timeless and
+                memorable.
+                SBE Africa believes design must first fulfill the
+                functional requirements of its clients, be technically
+                sound, innovative and always push the envelope.
               </p>
               
             </div>
@@ -86,16 +98,26 @@ export default function page() {
                 <GiWalkingBoot className='text-[3rem]' />
                 <h2 className='font-semibold text-4xl'>Our Mission Statement</h2>
                 <p>
-                  The International School of South Africa subscribes to the prestigious 
-                  Cambridge International Examinations (CIE) – the gold standard in international education.
+                  Constant pursuit of excellence,
+                  we are focused on understanding our
+                  clients’ needs, translating them into
+                  compelling designs that draw the eye,
+                  while incorporating the very best of
+                  smart technologies to provide effortless,
+                  comfortable, and stylish living.
                 </p>
             </div>
             <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
                 <GoTelescope className='text-[3rem]' />
                 <h2 className='font-semibold text-4xl'>Our Vision</h2>
                 <p>
-                  The International School of South Africa subscribes to the prestigious 
-                  Cambridge International Examinations (CIE) – the gold standard in international education.
+                  Constant pursuit of excellence,
+                  we are focused on understanding our
+                  clients’ needs, translating them into
+                  compelling designs that draw the eye,
+                  while incorporating the very best of
+                  smart technologies to provide effortless,
+                  comfortable, and stylish living.
                 </p>
             </div>
           </div>
@@ -108,23 +130,33 @@ export default function page() {
                 <PiTargetBold className='text-[3rem] ' />
                 <h2 className='font-semibold text-4xl'>Our Goals</h2>
                 <p>
-                  The International School of South Africa subscribes to the prestigious 
-                  Cambridge International Examinations (CIE) – the gold standard in international education.
+                  Constant pursuit of excellence,
+                  we are focused on understanding our
+                  clients’ needs, translating them into
+                  compelling designs that draw the eye,
+                  while incorporating the very best of
+                  smart technologies to provide effortless,
+                  comfortable, and stylish living.
                 </p>
             </div>
             <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
                 <FaRegHandshake className='text-[3rem]' />
                 <h2 className='font-semibold text-4xl'>Our Values</h2>
                 <p>
-                  The International School of South Africa subscribes to the prestigious 
-                  Cambridge International Examinations (CIE) – the gold standard in international education.
+                  Constant pursuit of excellence,
+                  we are focused on understanding our
+                  clients’ needs, translating them into
+                  compelling designs that draw the eye,
+                  while incorporating the very best of
+                  smart technologies to provide effortless,
+                  comfortable, and stylish living.
                 </p>
             </div>
           </div>
       </section>
 
 
-      <Team />
+      <Team users={users} />
 
       <Footer appInfo={appInfo} />
     </div>

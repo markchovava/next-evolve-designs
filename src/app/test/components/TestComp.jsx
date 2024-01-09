@@ -12,7 +12,7 @@ const config = {
 }}
 
 
-export default function TestComp({appInfo, permissions}) {
+export default function TestComp({appInfo, permissions, token}) {
     const appInfoData = JSON.parse(appInfo.value)
     const permissionsData = JSON.parse(permissions.value)
     const [app, setApp] = useState(appInfoData)
@@ -39,7 +39,7 @@ export default function TestComp({appInfo, permissions}) {
 
 
     console.log('data')
-    console.log(data)
+    console.log(token)
 
   return (
     <div>

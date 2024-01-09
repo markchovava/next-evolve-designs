@@ -11,13 +11,13 @@ export default function ContactForm() {
             <hr className="border-t-4 border-slate-900 w-[20%] pb-[2.5rem]" />
           </div>
           <div className="">
-            <div className="w-[100%] mb-[2rem] flex items-center justify-center gap-4">
+           {/*  <div className="w-[100%] mb-[2rem] flex items-center justify-center gap-4">
               <input type="text" placeholder="Write your First Name..." className="w-[50%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
               <input type="text" placeholder="Write your Last Name..." className="w-[50%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-            </div>
+            </div> */}
             <div className="w-[100%] mb-[2rem] flex items-center justify-center gap-4">
-              <input type="text" placeholder="Write your Email here..." className="w-[50%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
-              <input type="text" placeholder="Write your Last Phone Number..." className="w-[50%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+              <input type="text" placeholder="Write your Email / Phone Number here..." className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
+             {/*  <input type="text" placeholder="Write your Last Phone Number..." className="w-[50%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" /> */}
             </div>
             <div className="w-[100%] mb-[2rem] flex items-center justify-center gap-4">
               <textarea placeholder="Write your Message here..." className="w-[100%] h-[10rem] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300"></textarea>

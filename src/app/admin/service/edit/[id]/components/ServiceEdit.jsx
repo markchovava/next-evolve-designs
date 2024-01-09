@@ -3,8 +3,6 @@
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
 import { getToken } from '@/api/token';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -25,6 +23,7 @@ export default function ServiceEdit({ id }) {
     const [images, setImages] = useState([]);
     const [isSubmit, setIsSubmit] = useState(false);
     const imageFile = useRef(null)
+    const [thumbnail, setThumbnail] = useState({})
     const formData = new FormData();
 
     /* GET DATA */
@@ -33,6 +32,7 @@ export default function ServiceEdit({ id }) {
         const result = await AxiosClient.get(`service/${id}`, config)
           .then((response) => {
             setData(() => response.data.data)
+            setThumbnail(() => baseURL + response.data.data.thumbnail)
             setImages(() => response.data.data.service_images.map((item, i=1) => (
                 { ...item,  
                   image: baseURL + item.image, 
@@ -45,14 +45,7 @@ export default function ServiceEdit({ id }) {
     /* UPDATE DATA */
     async function postData() {
         setIsSubmit(false);
-        formData.append('name', data.name)
-        formData.append('description', data.description)
-        formData.append('thumbnail', data.thumbnail)
-        
-        data.service_images.forEach((item, i) => {
-          formData.append(`service_images[${i}]`, item.uploaded_image)
-        }) 
-      
+        //console.log(data)
         try{
           const result = await AxiosClient.post(`service/${id}`, data, config)
             .then((response) => {
@@ -108,13 +101,17 @@ export default function ServiceEdit({ id }) {
                   <input 
                   type="file" 
                   name="thumbnail"
-                  onChange={(e) => setData({...data, thumbnail: e.target.value})}
+                  onChange={(e) => {
+                    setData({...data, thumbnail: e.target.files[0]})
+                    setThumbnail(() => URL.createObjectURL(e.target.files[0]))
+                  
+                  }}
                   placeholder="Write your First Name..." 
                   className="w-[50%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300" />
               </div>
               <div className='relative w-[15rem] h-[15rem] rounded-2xl border bg-slate-200 overflow-hidden'>
                   <div className='absolute z-[10] w-[100%] h-[100%] flex items-center justify-center text-slate-600'>Image </div>
-                  <img src={baseURL + data.thumbnail} className='absolute z-10 w-[100%] h-[100%] object-cover' />
+                  <img src={thumbnail} className='absolute z-10 w-[100%] h-[100%] object-cover' />
               </div>
           </div>    
           {/* ROW */}

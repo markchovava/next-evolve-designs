@@ -140,8 +140,8 @@ export default function ProjectCategoryEdit({ id }) {
             <section className='w-[100%] h-auto flex justify-start items-start gap-3 mb-[2rem]'>
                 <div className="w-[90%]">
                     {projectCategory.length > 0 &&
-                        projectCategory.map((item) => (
-                            <div className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
+                        projectCategory.map((item, i) => (
+                            <div key={i} className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
                                 <div className='w-[90%]'>
                                     Category: <b>{item.category.name}</b>
                                 </div>
@@ -154,7 +154,7 @@ export default function ProjectCategoryEdit({ id }) {
                         ))
                     }
                     {categoryComp.map((item) => (
-                        <div key={item.key} className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
+                        <div key={i} className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
                             <select
                                 type="select"
                                 name='category_id'
@@ -162,8 +162,8 @@ export default function ProjectCategoryEdit({ id }) {
                                 className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300">
                                 <option value=''>Select an option.</option>
                                 {category.length > 0 && 
-                                    category.map(item => (
-                                        <option value={item.id}>{item.name}</option>
+                                    category.map((item, i) => (
+                                        <option key={i} value={item.id}>{item.name}</option>
                                     ))
                                 }
                                 

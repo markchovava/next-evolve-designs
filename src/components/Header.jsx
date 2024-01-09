@@ -9,8 +9,10 @@ import NavMain from "./NavMain";
 
 
 
-export default function Header({ appInfo }) {
-  const appInfoData = appInfo && JSON.parse(appInfo.value)
+export default async function Header({ appInfo, services, categories }) {
+  const appInfoData = await JSON.parse(appInfo.value)
+  const servicesData = await JSON.parse(services.value)
+  const categoriesData = await JSON.parse(categories.value)
     
   return (
     <div>
@@ -42,7 +44,7 @@ export default function Header({ appInfo }) {
           <hr className="mx-auto w-[90%] border-t border-slate-500" />
         </section>
         {/* NAVIGATION */}
-        <NavMain />
+        <NavMain servicesData={servicesData} appInfoData={appInfoData} categoriesData={categoriesData} />
     </div>
   )
 }

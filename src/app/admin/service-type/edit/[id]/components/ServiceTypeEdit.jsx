@@ -141,8 +141,8 @@ export default function ServiceTypeEdit({ id }) {
             <section className='w-[100%] h-auto flex justify-start items-start gap-3 mb-[2rem]'>
                 <div className="w-[90%]">
                     {serviceType.length > 0 &&
-                        serviceType.map((item) => (
-                            <div className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
+                        serviceType.map((item, i) => (
+                            <div key={i} className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
                                 <div className='w-[90%]'>
                                     Type: <b>{item.type.name}</b>
                                 </div>
@@ -154,8 +154,8 @@ export default function ServiceTypeEdit({ id }) {
                             </div>
                         ))
                     }
-                    {typeComp.map((item) => (
-                        <div key={item.key} className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
+                    {typeComp.map((item, i) => (
+                        <div key={i} className='w-[100%] mb-[2rem] flex justify-start items-center gap-3'>
                             <select
                                 type="select"
                                 name='type_id'
@@ -163,8 +163,8 @@ export default function ServiceTypeEdit({ id }) {
                                 className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300">
                                 <option value=''>Select an option.</option>
                                 {type.length > 0 && 
-                                    type.map(item => (
-                                        <option value={item.id}>{item.name}</option>
+                                    type.map((item, i) => (
+                                        <option key={i} value={item.id}>{item.name}</option>
                                     ))
                                 }
                                 

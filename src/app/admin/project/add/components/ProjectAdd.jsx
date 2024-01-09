@@ -4,6 +4,8 @@ import { getToken } from '@/api/token';
 import { ProjectContextState } from '@/context/ProjectContext';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
+import { useRouter } from 'next/navigation';
+
 
 const config = {
   headers: {
@@ -14,6 +16,7 @@ const config = {
 
 
 export default function ProjectAdd() {
+  const router = useRouter();
   const [isSubmit, setIsSubmit] = useState(false)
   const {projectState, projectDispatch,} = ProjectContextState()
   const [data, setData] = useState({})
@@ -27,7 +30,7 @@ export default function ProjectAdd() {
         const result = await AxiosClient.post(`project/`, data, config)
           .then((response) => {
             console.log(response.data)
-            //router.push('/admin/project')
+            router.push('/admin/project')
           })
         } catch (error) {
           console.error(`Error: ${error}`)
