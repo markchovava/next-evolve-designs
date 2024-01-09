@@ -12,12 +12,13 @@ const config = {
 }}
 
 
-export default function TestComp({appInfo, permissions, token}) {
+export default function TestComp({appInfo, permissions}) {
     const appInfoData = JSON.parse(appInfo.value)
     const permissionsData = JSON.parse(permissions.value)
     const [app, setApp] = useState(appInfoData)
     const [perm, setPerm] = useState(permissionsData)
     const [data, setData] = useState([])
+    const token = getToken();
 
     /* GET DATA */
   async function getData() {
@@ -36,19 +37,19 @@ export default function TestComp({appInfo, permissions, token}) {
       getData();
   }, []);
  
-
-
-    console.log('data')
     console.log(token)
 
   return (
     <div>
-      TESTCOMP
-      {app.data.name} <br />
+      TESTCOMP <br />
+      {token &&
+        token
+      }
+      {/* {app.data.name} <br />
       PERM <br />
       {perm.data.map(item => item.id + ', ')} <br />
       CATEGORY <br />
-      {data.map(item => item.id + ', ')} <br />
+      {data.map(item => item.id + ', ')} <br /> */}
       -----
       
         

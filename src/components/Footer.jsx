@@ -7,9 +7,13 @@ import { FaWhatsappSquare } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa";
 import { baseURL } from "@/api/baseURL";
+import { getToken } from "@/api/token";
+
+
 
 export default async function Footer({ appInfo }) {
     const appInfoData = await JSON.parse(appInfo.value)
+    const authToken = getToken()
 
   return (
     <section className="w-[100%] h-auto bg-[#403d36] text-white">
@@ -40,14 +44,18 @@ export default async function Footer({ appInfo }) {
                         <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
                         Contact Us</Link>
                 </li>
-                <li> 
-                    <Link href='/register' className="group flex items-center justify-start gap-2">
-                        <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                        Register</Link></li>
-                <li> 
-                    <Link href='/login' className="group flex items-center justify-start gap-2">
-                        <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                        Login</Link></li>
+                {!authToken && 
+                    <>
+                        <li> 
+                            <Link href='/register' className="group flex items-center justify-start gap-2">
+                                <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
+                                Register</Link></li>
+                        <li> 
+                            <Link href='/login' className="group flex items-center justify-start gap-2">
+                                <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
+                                Login</Link></li>
+                    </>
+                }
             </ul>
         </div>
         <div className="w-[30%]">

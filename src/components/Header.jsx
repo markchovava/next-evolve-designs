@@ -6,17 +6,19 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaWhatsappSquare } from "react-icons/fa";
 import NavAdmin from "./NavAdmin";
 import NavMain from "./NavMain";
+import { getToken } from "@/api/token";
 
 
 
 export default async function Header({ appInfo, services, categories }) {
+  const authToken = getToken()
   const appInfoData = await JSON.parse(appInfo.value)
   const servicesData = await JSON.parse(services.value)
   const categoriesData = await JSON.parse(categories.value)
     
   return (
     <div>
-        <NavAdmin />
+        { authToken && <NavAdmin /> }
         {/* TOP */}
         <section className='w-[100%] bg-[#403d36] text-white'>
           <div className='mx-auto w-[90%] py-3 flex items-center justify-between '>

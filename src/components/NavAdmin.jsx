@@ -1,12 +1,17 @@
 "use client"
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser } from "react-icons/fa";
+import { getToken } from "@/api/token";
 
 
 export default function NavAdmin() {
+    const router = useRouter();
+    const authToken = getToken()
+    const [isLogout, setIsLogout] = useState(false)
     const [isSetting, setIsSetting] = useState(false)
     const [isProject, setIsProject] = useState(false)
     const [isService, setIsService] = useState(false)
@@ -14,6 +19,26 @@ export default function NavAdmin() {
     const [isCategory, setIsCategory] = useState(false)
     const [isType, setIsType] = useState(false)
     const [isUser, setIsUser] = useState(false)
+
+
+    /* GET DATA */
+    async function postLogout() {
+        setIsLogout(false)
+        router.push(`/`) 
+        /* try{
+        const result = await AxiosClient.post(`logout/`, config)
+            .then((response) => {
+            router.push(`/`) 
+            
+            })
+        } catch (error) {
+            console.error(`Error: ${error}`)
+        }  */  
+    } 
+
+    useEffect(() => { 
+        isLogout == true && postLogout();
+    }, []);
 
   return (
     <section className='w-[100%] bg-slate-800 text-white text-sm'>
@@ -229,7 +254,11 @@ export default function NavAdmin() {
                                     <li className="px-[0.5rem] py-1 hover:bg-slate-900">
                                         <Link href='/admin/profile/password' className=" w-[100%]">Set Password</Link></li>
                                     <li className="px-[0.5rem] py-1 hover:bg-slate-900">
-                                        <Link href='/login' className=" w-[100%]">Login</Link></li>
+                                        <button onClick={() => setIsLogout(true)} className="text-left w-[100%]">Logout</button></li>
+                                    {!authToken &&
+                                        <li className="px-[0.5rem] py-1 hover:bg-slate-900">
+                                            <Link href='/login' className=" w-[100%]">Login</Link></li>
+                                    }
                                 </motion.ul>
                             </AnimatePresence> 
                             }            

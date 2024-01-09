@@ -43,7 +43,7 @@ export default function RoleEdit({ id }) {
             .then((response) => {
             setData(() => response.data.data)
             console.log(response.data)
-            router.push(`/admin/role/${data.id}`)   
+            router.push(`/admin/role/${id}`)   
             })
         } catch (error) {
             console.error(`Error: ${error}`)

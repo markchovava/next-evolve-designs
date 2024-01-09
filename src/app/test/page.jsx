@@ -18,9 +18,8 @@ const page = () => {
   return (
     <div>
       fgtjyttrb
-      {/* <TestComp appInfo={appInfo} permissions={permissions} token={token} />
-      <TestComp2 permissions={permissions}/> */}
-    Texts
+      <TestComp appInfo={appInfo} permissions={permissions} token={token} />
+     
     </div>
   )
 }
