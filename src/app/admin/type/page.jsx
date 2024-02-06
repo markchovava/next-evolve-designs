@@ -6,6 +6,7 @@ import { BsChevronRight } from "react-icons/bs";
 import TypeContent from './components/TypeContent';
 import getAppInfo from '@/api/getAppInfo';
 import getCategories from '@/api/getCategories';
+import getServices from '@/api/getServices';
 
 
 

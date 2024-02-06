@@ -5,6 +5,7 @@ import { BsChevronRight } from "react-icons/bs";
 import CategoryView from './components/CategoryView';
 import getAppInfo from '@/api/getAppInfo';
 import getServices from '@/api/getServices';
+import getCategories from '@/api/getCategories';
 
 
 export default function page({ params : {id} }) {

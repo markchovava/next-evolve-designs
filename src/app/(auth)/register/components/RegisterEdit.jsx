@@ -3,20 +3,18 @@
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
-import AxiosClient from '@/api/axiosClient';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
-import useAuth from '@/api/useAuth';
-import { setToken } from '@/api/token';
+import { tokenRole } from '@/api/tokenRole';
+import { baseURL } from '@/api/baseURL';
+import axios from 'axios';
+import { tokenAuth } from '@/api/tokenAuth';
 
 
 export default function RegisterEdit() {
     const router = useRouter();
-    const { csrf }  = useAuth();
-    const [data, setData] = useState({
-        email: '',
-        password: '',
-        password_confirmation: '',
-    });
+    const [data, setData] = useState({});
+    const { setRole } = tokenRole();
+    const { setAuthToken } = tokenAuth()
 
     const config = {
         headers: {
@@ -31,13 +29,14 @@ export default function RegisterEdit() {
 
 
   async function postData() {
-    console.log(data)
     setIsSubmit(false)
     try{
-      const result = await AxiosClient.post(`register/`, data, config)
+      const result = await axios.post(`${baseURL}register/`, data, config)
       .then((response) => {
-        setToken(response.data.token)
-        router.push('/')
+        setAuthToken(response.data.auth_token)
+        setRole(response.data.role_level)
+        console.log(response.data)
+        //router.push('/')
         
        
       })

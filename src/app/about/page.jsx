@@ -54,8 +54,8 @@ export default async function page() {
 
       {/* SECTION */}
       <section className='w-[100%] text-[#403d36] '>
-        <div className="mx-auto w-[90%] py-[4rem] flex items-center justify-start">
-            <div className="w-[55%] pr-[2rem]">
+        <div className="mx-auto w-[90%] py-[4rem] flex lg:flex-row flex-col lg:gap-1 gap-5 items-center justify-start">
+            <div className="lg:w-[55%] w-[100%] lg:pr-[2rem]">
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">About Us</h3>
               <hr className="border-t-4 border-black w-[20%] pb-[2rem]" />
               <p className="pb-[1.5rem]">
@@ -78,7 +78,7 @@ export default async function page() {
               </p>
               
             </div>
-            <div className="w-[45%]">
+            <div className="lg:w-[45%] w-[100%]">
               <div className="w-[100%] rounded-xl aspect-[5/4] overflow-hidden bg-slate-600">
                <img src="/assets/img/segments/02.jpg" className="w-[100%] h-[100%] object-fill" />
               </div>
@@ -89,41 +89,41 @@ export default async function page() {
 
      {/* COMPANY INTEGRITY */}
      <section style={{ backgroundImage: `url('/assets/img/parallax/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto text-white'>
-          <div className='mx-auto w-[90%] h-[100%] py-[5rem] flex items-start justify-center gap-4'>
-            <div className='flex-1'>
-              <hr className='ml-[1.5rem] border-t-8 border-slate-100 w-[20%]' />
-              <h1 className='pl-[1.5rem] font-bold text-[4rem] py-[2rem] leading-tight'>Why Choose Us?</h1>
-            </div>
-            <div className='border-l border-slate-200 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
-                <GiWalkingBoot className='text-[3rem]' />
-                <h2 className='font-semibold text-4xl'>Our Mission Statement</h2>
-                <p>
-                  Constant pursuit of excellence,
-                  we are focused on understanding our
-                  clients’ needs, translating them into
-                  compelling designs that draw the eye,
-                  while incorporating the very best of
-                  smart technologies to provide effortless,
-                  comfortable, and stylish living.
-                </p>
-            </div>
-            <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
-                <GoTelescope className='text-[3rem]' />
-                <h2 className='font-semibold text-4xl'>Our Vision</h2>
-                <p>
-                  Constant pursuit of excellence,
-                  we are focused on understanding our
-                  clients’ needs, translating them into
-                  compelling designs that draw the eye,
-                  while incorporating the very best of
-                  smart technologies to provide effortless,
-                  comfortable, and stylish living.
-                </p>
-            </div>
+          <div className='mx-auto w-[90%] h-[100%] py-[5rem] flex lg:flex-row flex-col items-start justify-center gap-4'>
+              <div className='flex-1'>
+                <hr className='ml-[1.5rem] border-t-8 border-slate-100 w-[20%]' />
+                <h1 className='pl-[1.5rem] font-bold text-[4rem] py-[2rem] leading-tight'>Why Choose Us?</h1>
+              </div>
+              <div className='border-l border-slate-200 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
+                  <GiWalkingBoot className='text-[3rem]' />
+                  <h2 className='font-semibold text-4xl'>Our Mission Statement</h2>
+                  <p>
+                    Constant pursuit of excellence,
+                    we are focused on understanding our
+                    clients’ needs, translating them into
+                    compelling designs that draw the eye,
+                    while incorporating the very best of
+                    smart technologies to provide effortless,
+                    comfortable, and stylish living.
+                  </p>
+              </div>
+              <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
+                  <GoTelescope className='text-[3rem]' />
+                  <h2 className='font-semibold text-4xl'>Our Vision</h2>
+                  <p>
+                    Constant pursuit of excellence,
+                    we are focused on understanding our
+                    clients’ needs, translating them into
+                    compelling designs that draw the eye,
+                    while incorporating the very best of
+                    smart technologies to provide effortless,
+                    comfortable, and stylish living.
+                  </p>
+              </div>
           </div>
           {/*  */}
-          <div className='mx-auto max-w-7xl h-[100%] pb-[5rem]  flex items-start justify-center gap-4'>
-            <div className='flex-1'>
+          <div className='mx-auto max-w-7xl h-[100%] pb-[5rem]  flex lg:flex-row flex-col items-start justify-center gap-4'>
+            <div className='lg:flex-1'>
               {/* Left Empty */}
             </div>
             <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
@@ -155,8 +155,6 @@ export default async function page() {
           </div>
       </section>
 
-
-      <Team users={users} />
 
       <Footer appInfo={appInfo} />
     </div>

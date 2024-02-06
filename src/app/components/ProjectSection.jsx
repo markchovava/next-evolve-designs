@@ -3,7 +3,7 @@ import { baseURL } from '@/api/baseURL'
 import Link from 'next/link'
 import { BsArrowRight } from 'react-icons/bs'
 
-export default async function ProjectSection({ projectLatest}) {
+export default async function ProjectSection({ projectLatest }) {
     const projectLatestData = await JSON.parse(projectLatest.value)
     console.log(projectLatestData?.data)
 
@@ -14,7 +14,7 @@ export default async function ProjectSection({ projectLatest}) {
         <h1 className="leading-none pb-[1.5rem] text-center font-extrabold text-[5rem]">Our Projects</h1>
         <hr className="border-t-4 border-slate-900 w-[20%] pb-[2rem]" />
       </div>
-      <section className='grid xl:grid-cols-3 md:grid-cols-3 grid-cols-2'>
+      <section className='grid xl:grid-cols-3 md:grid-cols-3 grid-cols-1'>
         {/* COL */}
         {projectLatestData?.data && 
             projectLatestData.data.map(item => (

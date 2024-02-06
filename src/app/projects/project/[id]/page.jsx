@@ -1,7 +1,5 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-import { BsArrowRight } from "react-icons/bs";
-import ContactForm from '@/components/ContactForm';
 import getAppInfo from '@/api/getAppInfo';
 import { getProject } from '@/api/getProjects';
 import ProjectView from './components/ProjectView';
@@ -24,11 +22,7 @@ export default function page({ params: {id} }) {
        <Header appInfo={appInfo} services={services} categories={categories} />
 
       <ProjectView project={project} />
-    
-    {/* SUBSCRIBE */}
-    <Subscribe />
-
-      <ContactForm />
+  
 
       <Footer appInfo={appInfo} />
     </div>

@@ -1,18 +1,25 @@
 "use client"
+
+import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
-import AxiosClient from '@/api/axiosClient';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
-import useAuth from '@/api/useAuth';
 import { setToken } from '@/api/token';
+import { CiSquareRemove } from "react-icons/ci";
+import { tokenRole } from '@/api/tokenRole';
+import { baseURL } from '@/api/baseURL';
+import { tokenAuth } from '@/api/tokenAuth';
 
 
 export default function LoginEdit() {
     const router = useRouter();
-  const [isSubmit, setIsSubmit] = useState(false)
-  const { csrf }  = useAuth();
-  const [data, setData] = useState({
+    const { setRole } = tokenRole()
+    const { setAuthToken } = tokenAuth();
+    const [errorMsg, setErrorMsg] = useState('')
+    const [isError, setIsError] = useState(false)
+    const [isSubmit, setIsSubmit] = useState(false)
+    const [data, setData] = useState({
     email: '',
     password: '',
   });
@@ -25,21 +32,26 @@ export default function LoginEdit() {
 
 
   async function postData() {
-    //csrf()
-    console.log(data)
     setIsSubmit(false)
     try{ 
-      const result = await AxiosClient.post(`login`, data, config)
+      const result = await axios.post(`${baseURL}login`, data, config)
       .then((response) => {
-        console.log(response.data)
-        setToken(response.data.token)
-        router.push('/')
+        console.log(response)
+        if(response.data.auth_token){
+          setAuthToken(response.data.auth_token)
+          setRole(response.data.role_level)
+          router.push('/')
+        } else if(response.data.message !== ''){
+          setIsError(true)
+          setErrorMsg(response.data.message)
+        }
         
        
       })
     } catch (error) {
       console.error(`Error: ${error}`)
-    }    
+    }
+
   }  
 
 
@@ -56,10 +68,16 @@ export default function LoginEdit() {
                 <h1 className="leading-none pb-[1.5rem] text-center font-extrabold text-[4rem]">
                     Login.</h1>
                 <hr className="border-t-4 border-slate-900 w-[20%] pb-[1.5rem]" />
-                <h6 className='pb-[2.5rem] flex gap-1'>
+                <h6 className='pb-[2rem] flex gap-1'>
                   Register 
                   <Link className='underline hover:text-blue-700' href='/register'>here.</Link>
                 </h6>
+                {isError == true && 
+                  <p className='pb-[2rem] text-md text-red-500 flex items-center gap-4 justify-between'>
+                    {errorMsg}
+                    <CiSquareRemove onClick={() => setIsError(false)} />
+                  </p>
+                }
             </div>
             <div className="w-[100%] mb-[2rem]">
                 <input 

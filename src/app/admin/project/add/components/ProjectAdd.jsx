@@ -93,8 +93,8 @@ export default function ProjectAdd() {
                     className="w-[100%] h-[10rem] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300"></textarea>
             </div>
              {/* ROW */}
-             <div className="w-[100%] mb-[3rem] grid grid-cols-3 gap-6 ">
-                {/* COL */}
+             <div className="w-[100%] mb-[3rem] grid lg:grid-cols-3 grid-cols-1 gap-6 ">
+                {/* COL */} 
                 <div className=''>    
                     <input 
                       type="file" 
@@ -196,7 +196,7 @@ export default function ProjectAdd() {
                     imageFiles.map(item => imageItems = [...imageItems, item.image])
                     setData({...data, project_images: imageItems})
                     setIsSubmit(true)}}
-                className='w-[20%] group transition ease-in-out duration-200  flex items-center justify-center gap-1 rounded-xl py-[1rem] px-[2rem] bg-slate-500 text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700'>
+                className='group transition ease-in-out duration-200  flex items-center justify-center gap-1 rounded-xl py-[1rem] px-[2rem] bg-slate-500 text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700'>
                 Submit <BsArrowRight className='transition ease-in-out duration-200 group-hover:translate-x-1' /></button>
             </div>
         </div>

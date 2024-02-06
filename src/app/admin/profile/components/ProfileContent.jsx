@@ -67,7 +67,7 @@ export default function ProfileContent() {
             {/* ROW */}
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">
                 <label className='w-[20%] gap-3 font-semibold'>Full Name:</label>
-                <div className='w-[80%]'>{`${data.first_name} ${data.last_name}`}</div>
+                <div className='w-[80%]'>{`${data.name ? data.name : 'Not added.'}`}</div>
             </div>
             {/* ROW */}
             <div className="w-[100%] mb-[2rem] flex items-center justify-start">

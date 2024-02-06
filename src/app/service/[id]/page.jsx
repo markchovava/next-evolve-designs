@@ -6,7 +6,6 @@ import getAppInfo from '@/api/getAppInfo';
 import getServices, { getService } from '@/api/getServices';
 import ServiceView from './components/ServiceView';
 import getCategories from '@/api/getCategories';
-import Subscribe from '@/components/Subscribe';
 
 
 
@@ -24,10 +23,9 @@ export default function page({ params: {id} }) {
 
       <ServiceView service={service} />
     
-    {/* SUBSCRIBE */}
-    <Subscribe />
+   
 
-      <ContactForm />
+      {/* <ContactForm /> */}
 
       <Footer appInfo={appInfo} />
     </div>

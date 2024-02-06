@@ -134,7 +134,7 @@ export default function ServiceEdit({ id }) {
                 className="w-[100%] h-[10rem] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300"></textarea>
           </div>
             {/* ROW */}
-            <div className="w-[100%] mb-[3rem] grid grid-cols-3 gap-6 ">
+            <div className="w-[100%] mb-[3rem] grid lg:grid-cols-3 grid-cols-1 gap-6 ">
               {/* COL */}
               { images && 
                 images.map((item) => (

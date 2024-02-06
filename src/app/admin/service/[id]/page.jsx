@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import ServiceView from './components/ServiceView';
 import getAppInfo from '@/api/getAppInfo';
 import getServices from '@/api/getServices';
+import getCategories from '@/api/getCategories';
 
 
 export default function page({ params: {id} }) {

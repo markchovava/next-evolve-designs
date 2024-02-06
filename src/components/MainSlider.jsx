@@ -33,7 +33,7 @@ export default function MainSlider() {
             <SwiperSlide>
               <div 
                 style={{ backgroundImage: `url('/assets/img/slides/01.jpg')`}}
-                className='w-full h-[36rem] bg-no-repeat bg-cover flex flex-col items-center justify-center'>  
+                className='w-full h-[30rem] lg:h-[36rem] bg-no-repeat bg-cover flex flex-col items-center justify-center'>  
               </div>
             </SwiperSlide>
             {/* <SwiperSlide>
@@ -46,7 +46,7 @@ export default function MainSlider() {
             <SwiperSlide>
               <div 
                 style={{ backgroundImage: `url('/assets/img/slides/03.jpg')`}}
-                className='w-full h-[36rem] bg-cover bg-gradient-to-br from-pink-200 to-slate-500'>
+                className='w-full h-[30rem] lg:h-[36rem] bg-cover bg-gradient-to-br from-pink-200 to-slate-500'>
            
               </div>
             </SwiperSlide>

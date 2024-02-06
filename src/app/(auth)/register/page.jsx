@@ -5,6 +5,8 @@ import { BsChevronRight } from "react-icons/bs";
 import RegisterEdit from './components/RegisterEdit';
 import getAppInfo from '@/api/getAppInfo';
 import getServices from '@/api/getServices';
+import getCategories from '@/api/getCategories';
+
 
 
 export default function page() {

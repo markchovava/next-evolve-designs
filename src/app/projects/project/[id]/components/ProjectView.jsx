@@ -44,8 +44,8 @@ export default async function ProjectView({ project}) {
 
        {/* SECTION */}
        <section className='w-[100%] bg-[#403d36] text-white'>
-        <div className="mx-auto w-[90%] py-[4rem] flex items-center justify-start">
-            <div className="w-[50%]">
+        <div className="mx-auto w-[90%] py-[4rem] flex lg:flex-row flex-col lg:gap-1 gap-5 items-center justify-start">
+            <div className="lg:w-[50%] w-[100%]">
               <h3 className="text-[3rem] font-extrabold leading-none pb-[1.5rem]">
                 Our {projectData.data?.name} Services</h3>
               <hr className="border-t-4 w-[20%] pb-[2rem]" />
@@ -54,8 +54,8 @@ export default async function ProjectView({ project}) {
               </p>
              
             </div>
-            <div className="w-[50%]">
-              <div className="w-[100%] rounded-xl aspect-[4/3] bg-slate-600 overflow-hidden">
+            <div className="lg:w-[50%] w-[100%]">
+              <div className="w-[100%] rounded-xl lg:aspect-[4/3] aspect-[5/3] bg-slate-600 overflow-hidden">
                 <img src={baseURL + projectData.data?.thumbnail} className="w-[100%] h-[100%] object-fill" />
               </div>
             </div>

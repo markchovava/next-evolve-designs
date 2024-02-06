@@ -114,7 +114,7 @@ export default function TypeContent() {
 
             {/*  */}
             <div className='w-[100%] flex items-center justify-between h-auto pb-[1.2rem]'>
-                <div className='w-[40%] flex items-center justify-start gap-2'>
+                <div className='lg:w-[40%] w-[70%] flex items-center justify-start gap-2'>
                     <input 
                         type='text'
                         value={search}
@@ -124,7 +124,7 @@ export default function TypeContent() {
                     />
                     <button 
                         onClick={() => setSearchSubmit(true)}
-                        className='bg-gradient-to-br transition-all duration-150 ease-in rounded-lg px-8 py-3 bg-slate-500 text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700 hover:text-white '>
+                        className='bg-gradient-to-br transition-all duration-150 ease-in rounded-lg px-6 lg:px-8 py-3 bg-slate-500 text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700 hover:text-white '>
                         Search</button>
                 </div>
                 <div>
@@ -135,44 +135,47 @@ export default function TypeContent() {
                 </div>
             </div>
 
-            {/* ROW */}
-            <div className="font-bold w-[100%] flex items-center justify-start bg-slate-100 py-3 border border-slate-200 ">
-                <div className="w-[30%] p-3 ">NAME</div>
-                <div className="w-[20%] p-3 border-l border-slate-300">UPDATED</div>
-                <div className="w-[30%] p-3 border-l border-slate-300">AUTHOR</div>
-                <div className="w-[20%] p-3 border-l border-slate-300">ACTION</div>
-            </div>
-            {/* ROW */}
-            {data.length > 0 ?
-              data.map(item => (
-                <div key={item.id} className="w-[100%] flex items-center justify-start py-3 border border-slate-200 ">
-                    <div className="w-[30%] p-3 ">{item.name}</div>
-                    <div className="w-[20%] p-3 border-l border-slate-300">{item.updated_at}</div>
-                    <div className="w-[30%] p-3 border-l border-slate-300">
-                      { item.user ? 
-                        (item.user.first_name ? item.user.first_name : item.user.email) + ' ' + 
-                        (item.user.last_name ? item.user.last_name : '') : 
-                        'Not Defined.'
-                      }
-                    </div>
-                    <div className="w-[20%] p-3 border-l border-slate-300 flex justify-start items-center gap-3 text-xl">
-                        <Link href={`/admin/type/${item.id}`}> 
-                            <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> </Link>
-                        <Link href={`/admin/type/edit/${item.id}`}> 
-                            <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> </Link>
-                        <button
-                            onClick={() => deleteData(item.id)}> 
-                            <MdDeleteForever 
-                                className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
-                        </button>
-                    </div>
-                </div>
-              ))
-            :
-              <div className="w-[100%] flex items-center justify-center py-4 border border-slate-200 ">
-                  <h6 className='text-2xl'>No Data Available at the moment.</h6>
+
+            <section className="w-[100%] lg:overflow-hidden overflow-auto">
+              {/* ROW */}
+              <div className="w-[50rem] lg:w-[100%] font-bold flex items-center justify-start bg-slate-100 py-3 border border-slate-200 ">
+                  <div className="w-[30%] p-3 ">NAME</div>
+                  <div className="w-[20%] p-3 border-l border-slate-300">UPDATED</div>
+                  <div className="w-[30%] p-3 border-l border-slate-300">AUTHOR</div>
+                  <div className="w-[20%] p-3 border-l border-slate-300">ACTION</div>
               </div>
-            }
+              {/* ROW */}
+              {data.length > 0 ?
+                data.map(item => (
+                  <div key={item.id} className="w-[50rem] lg:w-[100%] flex items-center justify-start py-3 border border-slate-200 ">
+                      <div className="w-[30%] p-3 ">{item.name}</div>
+                      <div className="w-[20%] p-3 border-l border-slate-300">{item.updated_at}</div>
+                      <div className="w-[30%] p-3 border-l border-slate-300">
+                        { item.user ? 
+                          (item.user.first_name ? item.user.first_name : item.user.email) + ' ' + 
+                          (item.user.last_name ? item.user.last_name : '') : 
+                          'Not Defined.'
+                        }
+                      </div>
+                      <div className="w-[20%] p-3 border-l border-slate-300 flex justify-start items-center gap-3 text-xl">
+                          <Link href={`/admin/type/${item.id}`}> 
+                              <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> </Link>
+                          <Link href={`/admin/type/edit/${item.id}`}> 
+                              <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> </Link>
+                          <button
+                              onClick={() => deleteData(item.id)}> 
+                              <MdDeleteForever 
+                                  className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 
+                          </button>
+                      </div>
+                  </div>
+                ))
+              :
+                <div className="w-[100%] flex items-center justify-center py-4 border border-slate-200 ">
+                    <h6 className='text-2xl'>No Data Available at the moment.</h6>
+                </div>
+              }
+            </section>
            
           
              {/* PAGINATION */}

@@ -13,7 +13,7 @@ import ProjectSection from "./components/ProjectSection";
 import Subscribe from "@/components/Subscribe";
 
 
-export default async function Home() {
+export default function Home() {
   const projectLatest = getProjectsLatest()
   const services = getServices()
   const appInfo = getAppInfo()
@@ -25,8 +25,8 @@ export default async function Home() {
       <MainSlider />
       {/* SECTION */}
       <section className='w-[100%] bg-[#403d36] text-white'>
-        <div className="mx-auto w-[90%] py-[4rem] flex items-center justify-start">
-            <div className="w-[50%] pr-[1.5rem]">
+        <div className="mx-auto w-[90%] py-[4rem] flex lg:flex-row flex-col items-center justify-start">
+            <div className="lg:w-[50%] w-[100%] pr-[1.5rem]">
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">Our Services</h3>
               <hr className="border-t-4 w-[20%] pb-[2rem]" />
               <p className="pb-[2rem]">
@@ -48,8 +48,8 @@ export default async function Home() {
                   View More <BsArrowRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
               </button> */}
             </div>
-            <div className="w-[50%]">
-              <div className="w-[100%] rounded-xl aspect-[4/3] bg-slate-600 overflow-hidden">
+            <div className="lg:w-[50%] w-[100%]">
+              <div className="w-[100%] rounded-xl aspect-[5/3] lg:aspect-[4/3] bg-slate-600 overflow-hidden">
                 <img src="/assets/img/segments/01.jpg" className="w-[100%] h-[100%] object-fill" />
               </div>
             </div>
@@ -60,13 +60,13 @@ export default async function Home() {
 
        {/* SECTION */}
        <section className='w-[100%] bg-[#403d36] text-white'>
-        <div className="mx-auto w-[90%] py-[4rem] flex items-center justify-start">
-            <div className="w-[50%]">
+        <div className="mx-auto w-[90%] py-[4rem] flex lg:flex-row lg:gap-0 gap-3 flex-col items-center justify-start">
+            <div className="lg:w-[50%]">
               <div className="w-[100%] rounded-xl aspect-[4/3] bg-slate-600 overflow-hidden">
                 <img src="/assets/img/segments/02.jpg" className="w-[100%] h-[100%] object-fill" />
               </div>
             </div>
-            <div className="w-[50%] pl-[2rem]">
+            <div className="lg:w-[50%] w-[100%] lg:pl-[2rem]">
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">Our Projects</h3>
               <hr className="border-t-4 w-[20%] pb-[2rem]" />
               <p className="pb-[2rem]">
@@ -75,12 +75,7 @@ export default async function Home() {
                 animation artists, and interior designers work closely to deliver an
                 exceptional, personalised service anywhere in Africa and worldwide.”
               </p>
-              <div className="flex">
-                <Link href='/projects/1'
-                    className='w-auto group flex items-center justify-center gap-1 rounded-xl py-[1.5rem] px-[2rem] text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700'>
-                    View More <BsArrowRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
-                </Link>
-              </div>
+              
             </div>
         </div>
       </section>
@@ -90,7 +85,7 @@ export default async function Home() {
       <ProjectSection projectLatest={projectLatest} />
 
       
-      <Subscribe />
+      {/* <Subscribe /> */}
 
      {/* FOOTER */}
     <Footer appInfo={appInfo} />
