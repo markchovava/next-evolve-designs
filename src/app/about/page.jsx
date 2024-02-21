@@ -27,7 +27,7 @@ export default async function page() {
        <Header appInfo={appInfo} services={services} categories={categories}/>
 
       {/* PAGE TITLE */}
-       <section style={{backgroundImage: `url('/assets/img/header/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
+       <section style={{backgroundImage: `url('/assets/img/parallax/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
         <div className='mx-auto w-[90%] flex items-center justify-center pt-[4rem] pb-[3rem]'>
           <div className="flex items-center justify-center flex-col">
             <h1 className="leading-none pb-[1.5rem] text-center font-extrabold text-[5rem] text-white drop-shadow-xl">About Us</h1>
@@ -58,23 +58,18 @@ export default async function page() {
             <div className="lg:w-[55%] w-[100%] lg:pr-[2rem]">
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">About Us</h3>
               <hr className="border-t-4 border-black w-[20%] pb-[2rem]" />
-              <p className="pb-[1.5rem]">
-                Evolve Designs is a prominent architectural firm
-                specialising in modern, upmarket residential
-                architecture, including townhouses, and
-                commercial buildings such as offices and shopping
-                centres. The firm comprises a highly skilled team
-                that provides clients with designs that boast
-                ‘Synergy, Boldness and Excellence’.
+              <p className="pb-[1.5rem] text-lg">
+                Evolve Design Studio is a full turn-key Interior Design, Architectural design, Interior Decorating, 
+                Exterior Landscaping Design Company, providing Project Management and Consultancy to both 
+                residential and corporate markets. Based in Newlands Harare, we consult onsite or at our Design 
+                Studio or alternatively at your site to get an immediate understanding of your needs.
                 
               </p>
-              <p className="">
-                It’s about design that lasts, where function
-                meets art in a building that is both timeless and
-                memorable.
-                SBE Africa believes design must first fulfill the
-                functional requirements of its clients, be technically
-                sound, innovative and always push the envelope.
+              <p className="text-lg">
+                We have more than 5 years of experience in creating beautiful functional living spaces for some of the 
+                most refined homeowners, corporates, hotels and complexes EVOLVE is renowned for its attention to detail, 
+                meeting clients' needs & hands-on approach from design to execution. As a design studio, getting to know 
+                our client is essential in helping them bring their vision to life.
               </p>
               
             </div>
@@ -90,68 +85,44 @@ export default async function page() {
      {/* COMPANY INTEGRITY */}
      <section style={{ backgroundImage: `url('/assets/img/parallax/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto text-white'>
           <div className='mx-auto w-[90%] h-[100%] py-[5rem] flex lg:flex-row flex-col items-start justify-center gap-4'>
-              <div className='flex-1'>
+              <div className='w-[30%]'>
                 <hr className='ml-[1.5rem] border-t-8 border-slate-100 w-[20%]' />
                 <h1 className='pl-[1.5rem] font-bold text-[4rem] py-[2rem] leading-tight'>Why Choose Us?</h1>
               </div>
-              <div className='border-l border-slate-200 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
-                  <GiWalkingBoot className='text-[3rem]' />
-                  <h2 className='font-semibold text-4xl'>Our Mission Statement</h2>
-                  <p>
-                    Constant pursuit of excellence,
-                    we are focused on understanding our
-                    clients’ needs, translating them into
-                    compelling designs that draw the eye,
-                    while incorporating the very best of
-                    smart technologies to provide effortless,
-                    comfortable, and stylish living.
-                  </p>
-              </div>
-              <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
+              <div className='w-[70%] border-l border-slate-100 px-[1.5rem] flex flex-col items-start justify-start gap-4'>
                   <GoTelescope className='text-[3rem]' />
                   <h2 className='font-semibold text-4xl'>Our Vision</h2>
-                  <p>
-                    Constant pursuit of excellence,
-                    we are focused on understanding our
-                    clients’ needs, translating them into
-                    compelling designs that draw the eye,
-                    while incorporating the very best of
-                    smart technologies to provide effortless,
-                    comfortable, and stylish living.
+                  <p className='text-lg'>
+                    We strive to pioneer design excellence: push the boundaries of creativity, setting new standards for quality and innovation.
+                    Empower communities: Leverage design to uplift individuals and communities, promoting positive social change.
+                    Celebrate African narratives: Showcase the richness and diversity of African cultures through impactful design.
+                    Inspire future generations: Nurture young design talent, fostering a vibrant and thriving design ecosystem in Africa.
+                    Lead by example: Uphold ethical and sustainable practices, setting a positive example for the design industry.
+                    This vision statement emphasizes Evolve Design Studio's ambition to not only be the best design studio in Africa, 
+                    but also to. Have a positive impact on the continent: By using design to empower communities, celebrate African narratives, and inspire future generations.
+                    Be a leader in ethical and sustainable design: Setting a positive example for the industry.
                   </p>
               </div>
           </div>
           {/*  */}
-          <div className='mx-auto max-w-7xl h-[100%] pb-[5rem]  flex lg:flex-row flex-col items-start justify-center gap-4'>
-            <div className='lg:flex-1'>
+          <div className='mx-auto w-[90%] h-[100%] py-[5rem] flex lg:flex-row flex-col items-start justify-center gap-4'>
+            <div className='w-[30%]'>
               {/* Left Empty */}
             </div>
-            <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
+            <div className='w-[70%] border-l border-slate-100 px-[1.5rem] flex flex-col items-start justify-start gap-4'>
                 <PiTargetBold className='text-[3rem] ' />
                 <h2 className='font-semibold text-4xl'>Our Goals</h2>
-                <p>
-                  Constant pursuit of excellence,
-                  we are focused on understanding our
-                  clients’ needs, translating them into
-                  compelling designs that draw the eye,
-                  while incorporating the very best of
-                  smart technologies to provide effortless,
-                  comfortable, and stylish living.
+                <p className='text-lg'>
+                  What if you focused exclusively on the power of place to improve the everyday experience? This 
+                  is the question we pose at the start of every project and which we answer by cross-pollinating 
+                  learnings and ideas that connect different experiences and disciplines. Each place has its own 
+                  story to tell, and as designers, we have the responsibility to convey that uniqueness. Ultimately, 
+                  place has the power to transform, connect, and do good.
+                  Evolve Design Studio envisions itself as the preeminent design force in Africa, shaping 
+                  the continent's visual identity through innovative, impactful, and culturally-sensitive design solutions.
                 </p>
             </div>
-            <div className='border-l border-slate-100 px-[1.5rem] flex-1 flex flex-col items-start justify-start gap-4'>
-                <FaRegHandshake className='text-[3rem]' />
-                <h2 className='font-semibold text-4xl'>Our Values</h2>
-                <p>
-                  Constant pursuit of excellence,
-                  we are focused on understanding our
-                  clients’ needs, translating them into
-                  compelling designs that draw the eye,
-                  while incorporating the very best of
-                  smart technologies to provide effortless,
-                  comfortable, and stylish living.
-                </p>
-            </div>
+           
           </div>
       </section>
 

@@ -105,6 +105,6 @@ export default function LoginEdit() {
                     Submit <BsArrowRight className='transition ease-in-out duration-200 group-hover:translate-x-1' /></button>
             </div>
         </div>
-      </section>
+    </section>
   )
 }

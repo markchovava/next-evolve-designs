@@ -29,20 +29,14 @@ export default function Home() {
             <div className="lg:w-[50%] w-[100%] pr-[1.5rem]">
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">Our Services</h3>
               <hr className="border-t-4 w-[20%] pb-[2rem]" />
-              <p className="pb-[2rem]">
-                Evolve Designs is a prominent architectural firm
-                specialising in modern, upmarket residential
-                architecture, including townhouses, and
-                commercial buildings such as offices and shopping
-                centres. The firm comprises a highly skilled team
-                that provides clients with designs that boast
-                ‘Synergy, Boldness and Excellence’.
+              <p className="pb-[2rem] text-lg">
+                Evolve Design Studio is a full turn-key Interior Design, Architectural design, 
+                Interior Decorating, Exterior Landscaping Design Company, providing Project
+                Management and Consultancy to both residential and corporate markets. Based 
+                in Newlands Harare, we consult onsite or at our Design Studio or alternatively 
+                at your site to get an immediate understanding of your needs.
               </p>
-              <p className="pb-[2rem]">
-                It’s about design that lasts, where function
-                meets art in a building that is both timeless and
-                memorable.
-              </p>
+              
              {/*  <button 
                   className='group flex items-center justify-center gap-1 rounded-xl py-[1.5rem] px-[2rem] text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700'>
                   View More <BsArrowRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
@@ -69,11 +63,12 @@ export default function Home() {
             <div className="lg:w-[50%] w-[100%] lg:pl-[2rem]">
               <h3 className="text-[4rem] font-extrabold leading-none pb-[1.5rem]">Our Projects</h3>
               <hr className="border-t-4 w-[20%] pb-[2rem]" />
-              <p className="pb-[2rem]">
-                With a strong focus on modern, contemporary architecture, this
-                team and their architectural technologists, 3D visual artists, video
-                animation artists, and interior designers work closely to deliver an
-                exceptional, personalised service anywhere in Africa and worldwide.”
+              <p className="pb-[2rem] text-lg">
+                We have more than 5  years of experience in creating beautiful functional living spaces for 
+                some of the most refined homeowners, corporates, hotels and complexes EVOLVE  is renowned for 
+                its attention to detail, meeting clients' needs & hands-on approach from design to execution.
+                As a design studio, getting to know our client is essential in helping them bring their vision 
+                to life.
               </p>
               
             </div>

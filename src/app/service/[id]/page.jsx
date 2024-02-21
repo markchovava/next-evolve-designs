@@ -21,7 +21,7 @@ export default function page({ params: {id} }) {
         {/* HEADER */}
        <Header appInfo={appInfo} services={services} categories={categories} />
 
-      <ServiceView service={service} />
+      <ServiceView service={service} id={id} />
     
    
 

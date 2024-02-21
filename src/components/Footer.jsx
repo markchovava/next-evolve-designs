@@ -86,7 +86,7 @@ export default async function Footer({ appInfo }) {
             </div>
         </div>
         <div className="fixed bottom-[5%] right-[5%] z-20">
-            <Link href='#'>
+            <Link href={appInfoData.data?.whatsapp}>
                 <FaWhatsappSquare className="text-[4rem] text-green-600 border border-white drop-shadow-lg hover:scale-110 transition-all ease-in-out" />
             </Link>
         </div>

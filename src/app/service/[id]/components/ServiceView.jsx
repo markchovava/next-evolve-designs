@@ -3,16 +3,16 @@ import { BsChevronRight } from "react-icons/bs";
 import Link from 'next/link'
 import { baseURL } from "@/api/baseURL";
 
-export default async function ServiceView({ service }) {
-    const serviceData = await JSON.parse(service.value)
-    console.log(serviceData)
+
+export default async function ServiceView({ service, id }) {
+    const serviceData = await JSON.parse(service.value);
   return (
     <>
         {/* PAGE TITLE */}
       <section style={{backgroundImage: `url('/assets/img/header/01.jpg')`}} className='bg-cover bg-fixed w-[100%] h-auto bg-slate-50'>
         <div className='mx-auto w-[90%] flex items-center justify-center pt-[4rem] pb-[3rem]'>
           <div className="flex items-center justify-center flex-col">
-            <h1 className="leading-none pb-[1.5rem] text-center font-extrabold text-[5rem] text-white drop-shadow-xl">
+            <h1 className="leading-none pb-[1.5rem] text-center font-extrabold text-[4rem] text-white drop-shadow-xl">
                {serviceData.data?.name}</h1>
             <hr className="border-t-4 border-white drop-shadow-xl w-[20%]" />
           </div>
@@ -33,7 +33,7 @@ export default async function ServiceView({ service }) {
               </li>
               <li><BsChevronRight /></li>
               <li className='flex justify-start items-center'>
-                <Link href='/service/architectural' className='font-semibold'>
+                <Link href={`/service/${id}`} className='font-semibold'>
                     {serviceData.data?.name}</Link>
               </li>
             </ul>
@@ -48,14 +48,14 @@ export default async function ServiceView({ service }) {
               <h3 className="text-[3rem] font-extrabold leading-none pb-[1.5rem]">
                 Our {serviceData.data?.name} Services</h3>
               <hr className="border-t-4 w-[20%] pb-[2rem]" />
-              <p className="pb-[2rem]">
+              <p className="pb-[2rem] lg:pr-[1.5rem] text-lg">
                 {serviceData.data?.description}
               </p>
              
             </div>
             <div className="lg:w-[50%] w-[100%]">
               <div className="w-[100%] rounded-xl lg:aspect-[4/3] aspect-[5/3] bg-slate-600 overflow-hidden">
-                <img src={baseURL + serviceData.data?.thumbnail} className="w-[100%] h-[100%] object-fill" />
+                <img src={baseURL + serviceData.data?.thumbnail} className="w-[100%] h-[100%] object-cover" />
               </div>
             </div>
         </div>
@@ -66,7 +66,7 @@ export default async function ServiceView({ service }) {
     { serviceData.data?.service_images &&
         <section className='w-[100%] h-auto'>
             <div className='w-[90%] h-[100%] mx-auto py-[5rem]'>
-                <section className='grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1'>
+                <section className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1'>
                     {/* COL */}
                     {serviceData.data?.service_images.map(item => (
                         <div key={item} className='group h-[25rem] overflow-hidden relative flex items-end justify-center'>

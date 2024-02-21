@@ -50,6 +50,13 @@ export default function MainSlider() {
            
               </div>
             </SwiperSlide>
+            <SwiperSlide>
+              <div 
+                style={{ backgroundImage: `url('/assets/img/slides/05.jpg')`}}
+                className='w-full h-[30rem] lg:h-[36rem] bg-cover bg-gradient-to-br from-pink-200 to-slate-500'>
+           
+              </div>
+            </SwiperSlide>
            
           </Swiper>
     

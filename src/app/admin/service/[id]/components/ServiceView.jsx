@@ -70,21 +70,11 @@ export default function ServiceView({ id }) {
                   {data.description}
                 </div>
             </div>
-            {/* ROW */}
-            {data.types &&
-              <div className="w-[100%] mb-[2rem] flex items-center justify-start">
-                  <label className='w-[20%] gap-3 font-semibold'>Types:</label>
-                  <div className='w-[80%] font-bold'>
-                    {data.types.map(item => (
-                      `${item.name}, `
-                    ))}
-                  </div>
-              </div>
-            }
+            
             {/* ROW */}
             <div className="w-[100%] mb-[2rem] flex items-start justify-start">
                 <label className='w-[20%] gap-3 font-semibold'>Images:</label>
-                <div className='w-[80%] grid grid-cols-3 gap-4'>
+                <div className='w-[80%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4'>
                   { data.service_images ? 
                     data.service_images.map((item) => (
                       <div key={item.id} className='relative w-[15rem] h-[15rem] rounded-2xl border bg-slate-200 overflow-hidden'>
