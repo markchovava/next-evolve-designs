@@ -2,21 +2,22 @@
 
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
-import { getToken } from '@/api/token';
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
 
 
 export default function UserView({ id }) {
     const [data, setData] = useState({});
     const [image, setImage] = useState({});
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     /* GET DATA */
     async function getData() {
@@ -24,8 +25,7 @@ export default function UserView({ id }) {
         const result = await AxiosClient.get(`user/${id}`, config)
             .then((response) => {
             setData(() => response.data.data)
-            setImage(response.data.data.image && baseURL + response.data.data.image)
-            console.log(response.data.data)   
+            setImage(response.data.data.image && baseURL + response.data.data.image) 
             })
         } catch (error) {
             console.error(`Error: ${error}`)

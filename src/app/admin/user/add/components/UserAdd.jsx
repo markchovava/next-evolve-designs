@@ -1,21 +1,13 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
-import { baseURL } from '@/api/baseURL';
-import { getToken } from '@/api/token';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { CiCircleRemove } from "react-icons/ci";
 import { useEffect, useRef, useState } from 'react';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
+import { tokenAuth } from '@/api/tokenAuth';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 export default function UserAdd() {
     const router = useRouter()
@@ -23,9 +15,15 @@ export default function UserAdd() {
     const [isSubmit, setIsSubmit] = useState(false);
     const [image, setImage] = useState()
     const [role, setRole] = useState({})
-    const [permission, setPermission] = useState({})
     const imageRef = useRef(null)
     const formData = new FormData();
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
   
   
     /* GET ROLES */
@@ -33,33 +31,18 @@ export default function UserAdd() {
       try{
         const result = await AxiosClient.get(`role/`, config)
           .then((response) => {
-            setRole(() => response.data.data)  
-            console.log(response.data.data)    
+            setRole(() => response.data.data)     
           })
         } catch (error) {
           console.error(`Error: ${error}`)
         }   
     } 
-    /* GET PERMISSIONS */
-    async function getPermissions() {
-      try{
-        const result = await AxiosClient.get(`permission/`, config)
-          .then((response) => {
-            setPermission(() => response.data.data)  
-            console.log(response.data.data)    
-          })
-        } catch (error) {
-          console.error(`Error: ${error}`)
-        }   
-    } 
+    
   
     /* SUBMIT DATA */
     async function postData() {
       setIsSubmit(false);
-      console.log('Added by USER')
-      console.log(data)
       formData.append('role_id', data.role_id && data.role_id)
-      formData.append('permission_id', data.permission_id && data.permission_id)
       formData.append('image', data.image && data.image)
       formData.append('name', `${data.first_name && data.first_name} ${data.last_name && data.last_name}`)
       formData.append('first_name', data.first_name && data.first_name)
@@ -86,7 +69,6 @@ export default function UserAdd() {
   
     useEffect(() => { 
       getRoles();
-      getPermissions();
     }, []);
   
     useEffect(() => { 
@@ -199,24 +181,6 @@ export default function UserAdd() {
                           value={item.id} 
                           selected={item.id == data.role_id && 'selected'}>
                             {item.name}</option>
-                      ))}
-                  </select>
-              </div>
-            }
-
-            {/* PERMISSIONS ROW */}
-            {permission.length > 0 && 
-              <div className="w-[100%] mb-[2rem]">
-                  <select
-                    type="select"
-                    name='permission_id' 
-                    onChange={(e) => setData({...data, permission_id: e.target.value})} 
-                    placeholder="Select Permission..." 
-                    className="w-[100%] rounded-xl px-[1rem] py-[1rem] outline-none border border-slate-300">
-                      <option>Select a Permission Option.</option>
-                      {permission.map(item => (
-                        <option key={item.id} value={item.id} selected={item.id == data.permission_id && 'selected'}>
-                          {item.name}</option>
                       ))}
                   </select>
               </div>

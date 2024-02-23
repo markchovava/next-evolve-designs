@@ -3,9 +3,8 @@ import { baseURL } from '@/api/baseURL'
 import Link from 'next/link'
 import { BsArrowRight } from 'react-icons/bs'
 
-export default async function ProjectSection({ projectLatest }) {
-    const projectLatestData = await JSON.parse(projectLatest.value)
-    console.log(projectLatestData?.data)
+export default function ProjectSection({ projectLatest }) {
+   
 
   return (
     <section className='w-[100%] h-auto bg-slate-50'>
@@ -16,8 +15,8 @@ export default async function ProjectSection({ projectLatest }) {
       </div>
       <section className='grid xl:grid-cols-3 md:grid-cols-3 grid-cols-1'>
         {/* COL */}
-        {projectLatestData?.data && 
-            projectLatestData.data.map(item => (
+        {projectLatest && 
+            projectLatest.map(item => (
                 <div key={item.id} className='group h-[30rem] bg-top bg-cover relative flex items-end justify-center' 
                 style={{backgroundImage: `url('${baseURL + item.thumbnail}')`}}>
                 <div className='group-hover:opacity-0 transition-all duration-300 w-[100%] flex items-center justify-center py-4 bg-slate-900/70 drop-shadow-lg text-xl font-semibold text-white shadow-lg'>

@@ -5,13 +5,12 @@ import React, { createContext, useContext, useState } from 'react'
 export const MainContext = createContext()
 
 export default function MainContextProvider({ children }) {
-    const [appInfo, setAppInfo] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
     
 
     return (
         <MainContext.Provider value={{ 
-            appInfo, 
-            setAppInfo
+            isLoading, setIsLoading
         }}>
             { children }
         </MainContext.Provider>

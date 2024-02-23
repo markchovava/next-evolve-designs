@@ -1,17 +1,14 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
 import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { FaEye } from 'react-icons/fa';
 import { MdDeleteForever, MdEdit } from 'react-icons/md';
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 export default function TypeContent() {
@@ -20,6 +17,13 @@ export default function TypeContent() {
   const [prevURL, setPrevURL] = useState()
   const [search, setSearch] = useState('');
   const [searchSubmit, setSearchSubmit] = useState(false);
+  const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
   /* PAGINATION */
   async function paginationHandler(url) {
@@ -41,7 +45,6 @@ export default function TypeContent() {
             const result = await AxiosClient.get(`type/`, config)
             .then((response) => {
                 setData(response.data.data)
-                console.log(response.data.data)
                 setPrevURL(response.data.links.prev)
                 setNextURL(response.data.links.next)
                 setSearch(search)
@@ -56,7 +59,6 @@ export default function TypeContent() {
             const result = await AxiosClient.get(`type?search=${search}`, config)
             .then((response) => {
                 setData(response.data.data)
-                console.log(response.data.links.prev)
                 setPrevURL(response.data.links.prev)
                 setNextURL(response.data.links.next)
                 setSearch(search)

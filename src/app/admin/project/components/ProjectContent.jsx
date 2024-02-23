@@ -7,12 +7,9 @@ import { FaCirclePlus } from "react-icons/fa6";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { FaEye } from 'react-icons/fa';
 import { MdDeleteForever, MdEdit } from 'react-icons/md';
+import { tokenAuth } from '@/api/tokenAuth';
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 export default function ProjectContent() {
@@ -21,6 +18,13 @@ export default function ProjectContent() {
   const [prevURL, setPrevURL] = useState()
   const [search, setSearch] = useState('');
   const [searchSubmit, setSearchSubmit] = useState(false);
+  const { getAuthToken } = tokenAuth();
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAuthToken()}`
+  }}
 
   /* PAGINATION */
   async function paginationHandler(url) {

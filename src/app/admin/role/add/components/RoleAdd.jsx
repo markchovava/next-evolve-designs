@@ -1,19 +1,11 @@
 "use client"
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header'
+import { tokenAuth } from '@/api/tokenAuth';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
 
 export default function RoleAdd() {
     const router = useRouter();
@@ -23,6 +15,13 @@ export default function RoleAdd() {
     level: null,
     description: '',
   });
+  const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
   const handleInput = (e) => {
     setData({...data, [e.target.name]: e.target.value})

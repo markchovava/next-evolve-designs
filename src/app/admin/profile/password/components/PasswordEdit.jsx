@@ -1,22 +1,25 @@
 "use client"
 
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 export default function PasswordEdit() {
   const router = useRouter()
   const [data, setData] = useState({})
   const [isSubmit, setIsSubmit] = useState(false);
+  const { getAuthToken } = tokenAuth()
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAuthToken()}`
+  }}
 
   /* GET DATA */
   async function getData() {

@@ -1,22 +1,25 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import {BsArrowRight } from "react-icons/bs";
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 export default function RoleEdit({ id }) {
     const router = useRouter();
     const [data, setData] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     const handleInput = (e) => {
         setData({...data, [e.target.name]: e.target.value})

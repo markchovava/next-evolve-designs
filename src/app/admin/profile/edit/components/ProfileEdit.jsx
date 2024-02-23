@@ -2,24 +2,27 @@
 
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
-import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 export default function ProfileEdit() {
     const router = useRouter()
   const [data, setData] = useState({})
   const [isSubmit, setIsSubmit] = useState(false);
-  const [image, setImage] = useState()
+  const [image, setImage] = useState();
+  const { getAuthToken } = tokenAuth();
+  
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Authorization': `Bearer ${getAuthToken()}`
+  }}
 
   /* GET DATA */
   async function getData() {

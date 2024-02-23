@@ -1,6 +1,7 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
 import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import { ServiceContextState } from '@/context/ServiceContext';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
@@ -8,11 +9,7 @@ import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 export default function ServiceAdd() {
@@ -22,6 +19,13 @@ export default function ServiceAdd() {
   const [data, setData] = useState({})
   const [thumbnail, setThumbnail] = useState()
   const [images, setImages] = useState({}) // For viewing on this page only
+  const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
   async function postData() {
     setIsSubmit(false)

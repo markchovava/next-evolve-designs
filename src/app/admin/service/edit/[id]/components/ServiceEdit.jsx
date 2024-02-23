@@ -3,18 +3,13 @@
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
 import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
 import { CiCircleRemove } from 'react-icons/ci';
 
-
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
 
 
 export default function ServiceEdit({ id }) {
@@ -24,7 +19,13 @@ export default function ServiceEdit({ id }) {
     const [isSubmit, setIsSubmit] = useState(false);
     const imageFile = useRef(null)
     const [thumbnail, setThumbnail] = useState({})
-    const formData = new FormData();
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     /* GET DATA */
     async function getData() {

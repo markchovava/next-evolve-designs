@@ -21,7 +21,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
             <div className='mx-auto w-[90%] flex items-center justify-between'>
                 {/* Logo */}
                 <div className="w-[15%] h-auto">
-                    <img src={baseURL + appInfoData.data?.image} className="object-fill" alt="" />
+                    <img src={baseURL + appInfoData?.image} className="object-fill" alt="logo" />
                 </div>
                 <div >
                     <ul className="flex items-center justify-start gap-4 font-semibold tracking-wider">
@@ -30,7 +30,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                     <li><Link href='/about' className="flex items-center justify-center gap-1 hover:border-b border-slate-300 hover:text-slate-100 py-3 transition-all ease-in duration-100">
                         ABOUT US</Link></li>
 
-                    { categoriesData.data &&
+                    { categoriesData?.length > 0 &&
                         <li className="relative" 
                             onClick={() => {
                                 setIsProject(!isProject);
@@ -48,7 +48,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                                 exit={{ opacity:1 }}
                                 transition={{ duration: 0.6, type:'spring' }}
                                 className="top-[120%] left-[-0.7rem] w-[160%] border border-white bg-[#403d36] absolute z-20">
-                                    {categoriesData?.data.map(item => (
+                                    {categoriesData?.map(item => (
                                         <li key={item.id} className="w-[100%] h-auto hover:bg-[#312f28] px-[0.7rem] py-2">
                                             <Link href={`/projects/${item.id}`} className=" w-[100%]">{item.name}</Link></li>
                                     ))}
@@ -59,7 +59,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                             }
                         </li>
                     }
-                    {servicesData.data &&
+                    {servicesData?.length &&
                         <li className="relative" 
                             onClick={() => {
                                 setIsService(!isService)
@@ -78,7 +78,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                                 transition={{ duration: 0.6, type:'spring' }}
                                 className="top-[120%] left-[-0.7rem] w-[160%] border border-white bg-[#403d36] absolute z-20">
             
-                                    {servicesData?.data.map(item => (
+                                    {servicesData?.map(item => (
                                         <li key={item.id} className="w-[100%] h-auto px-[0.7rem] hover:bg-[#312f28] py-2">
                                         <Link href={`/service/${item.id}`} className=" w-[100%]">
                                             {item.name}</Link></li>
@@ -101,7 +101,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
             <div className='mx-auto w-[100%] flex flex-col items-center justify-between'>
                 {/* Logo */}
                 <div className="w-[50%] h-auto">
-                    <img src={baseURL + appInfoData.data?.image} className="object-fill" alt="" />
+                    <img src={baseURL + appInfoData?.image} className="object-fill" alt="" />
                 </div>
                 {/* HAMBURGER */}
                 <div className="mx-auto w-[90%] py-2 flex items-center justify-end">
@@ -124,7 +124,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                             <li className="relative w-[100%]"><Link href='/about' className="w-[100%] flex items-center justify-center gap-1 hover:bg-[#312f28] hover:text-slate-100 py-3 transition-all ease-in duration-100">
                                 ABOUT US</Link></li>
 
-                            { categoriesData.data &&
+                            { categoriesData?.length > 0 &&
                                 <li className="relative w-[100%]" 
                                     onClick={() => {
                                         setIsProject(!isProject);
@@ -142,7 +142,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                                         exit={{ opacity:1 }}
                                         transition={{ duration: 0.6, type:'spring' }}
                                         className="top-[120%] w-[100%] bg-[#403d36]">
-                                            {categoriesData?.data.map(item => (
+                                            {categoriesData?.map(item => (
                                                 <li key={item.id} className="w-[100%] h-auto bg-[#312f28] hover:bg-[#312f28] px-[0.7rem] py-2">
                                                     <Link href={`/projects/${item.id}`} className="w-[100%] flex items-center justify-center">
                                                         {item.name}</Link></li>
@@ -154,7 +154,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                                     }
                                 </li>
                             }
-                        {servicesData.data &&
+                        {servicesData?.length > 0 &&
                             <li className="relative w-[100%]" 
                                 onClick={() => {
                                     setIsService(!isService)
@@ -173,7 +173,7 @@ export default function NavMain({ servicesData, appInfoData, categoriesData }) {
                                     transition={{ duration: 0.6, type:'spring' }}
                                     className="top-[120%] w-[100%] bg-[#403d36]">
                 
-                                        {servicesData?.data.map(item => (
+                                        {servicesData?.map(item => (
                                             <li key={item.id} className="w-[100%] h-auto bg-[#312f28] hover:bg-[#312f28] px-[0.7rem] py-2">
                                             <Link href={`/service/${item.id}`} className="w-[100%] flex items-center justify-center">
                                                 {item.name}</Link></li>

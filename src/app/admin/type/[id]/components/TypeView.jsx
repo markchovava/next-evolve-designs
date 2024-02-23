@@ -1,18 +1,21 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 export default function TypeView({ id }) {
   const [data, setData] = useState({});
+  const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
   /* GET DATA */
   async function getData() {

@@ -1,17 +1,13 @@
 "use client"
+
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
 import { ProjectContextState } from '@/context/ProjectContext';
 import { useEffect, useState } from 'react';
 import { BsArrowRight } from "react-icons/bs";
 import { useRouter } from 'next/navigation';
+import { tokenAuth } from '@/api/tokenAuth';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
 
 
 
@@ -22,6 +18,13 @@ export default function ProjectAdd() {
   const [data, setData] = useState({})
   const [thumbnail, setThumbnail] = useState()
   const [images, setImages] = useState({}) // For viewing on this page only
+  const { getAuthToken } = tokenAuth();
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAuthToken()}`
+  }}
 
   async function postData() {
       setIsSubmit(false)

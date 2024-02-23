@@ -6,25 +6,27 @@ import { useRouter } from 'next/navigation';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
 import AxiosClient from '@/api/axiosClient';
 import { getToken } from '@/api/token';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header'
+import { tokenAuth } from '@/api/tokenAuth';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 
 export default function CategoryAdd() {
     const router = useRouter();
     const [isSubmit, setIsSubmit] = useState(false)
+    const { getAuthToken } = tokenAuth()
     const [data, setData] = useState({
       name: '',
       description: '',
     });
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     const handleInput = (e) => {
       setData({...data, [e.target.name]: e.target.value})

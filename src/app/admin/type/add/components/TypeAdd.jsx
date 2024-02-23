@@ -1,17 +1,11 @@
 "use client"
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getToken } from '@/api/token';
 import AxiosClient from '@/api/axiosClient';
 import { BsArrowRight } from 'react-icons/bs';
+import { tokenAuth } from '@/api/tokenAuth';
 
 
-
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
 
 export default function TypeAdd() {
   const router = useRouter();
@@ -20,6 +14,13 @@ export default function TypeAdd() {
     name: '',
     description: '',
   });
+  const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
   const handleInput = (e) => {
     setData({...data, [e.target.name]: e.target.value})

@@ -1,18 +1,14 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
-import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { CiCircleRemove } from 'react-icons/ci';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 export default function ProjectEdit({ id }) {
@@ -22,6 +18,13 @@ export default function ProjectEdit({ id }) {
   const [isSubmit, setIsSubmit] = useState(false);
   const imageFile = useRef(null)
   const [thumbnail, setThumbnail] = useState({})
+  const { getAuthToken } = tokenAuth();
+
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAuthToken()}`
+  }}
 
   /* GET DATA */
   async function getData() {

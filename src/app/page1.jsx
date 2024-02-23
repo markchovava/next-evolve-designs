@@ -3,15 +3,13 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import MainSlider from "@/components/MainSlider";
 import ServiceSection from "./components/ServiceSection";
-
+import getServices from "@/api/getServices";
+import { getProjectsLatest } from "@/api/getProjects";
 import ProjectSection from "./components/ProjectSection";
-
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "@/api/baseURL";
 import useSWR from "swr";
-import { MainContextState } from "@/context/MainContext";
-import Loader from "@/components/Loader";
-import { useEffect } from "react";
 import fetcherWeb from "@/swr/fetcherWeb";
 
 
@@ -26,23 +24,65 @@ const fetcher = async (url) => {
 
 
 export default function Home() {
-  const { data: appData, error: appInfoError } = useSWR(`${baseURL}app-info`, fetcherWeb)
-  const { data: serviceData, error: servicesError } = useSWR(`${baseURL}service`, fetcherWeb)
-  const { data: projectData, error: projectError } = useSWR(`${baseURL}project/latest`, fetcherWeb)
-  const { data: categoryData, error: categoriesError } = useSWR(`${baseURL}category`, fetcherWeb)
-  const appInfo = appData?.data;
-  const services = serviceData?.data;
-  const categories = categoryData?.data;
-  const projectLatest = projectData?.data;
+  //const projectLatest = getProjectsLatest();
+  const { data: appData, error } = useSWR(`${baseURL}app-info`, fetcher)
+  const [appInfo, setAppInfo] = useState(appData);
+  const [services, setServices] = useState([]);
+  const [categories, setCategories] = useState([]);
 
+  //const { data: appData, error } = useSWR(`${baseURL}app-info`, fetcher)
 
+  console.log('appData');
+  console.log(appData);
+  /* GET APPINFO */
+  /* async function getAppInfo() {
+    try{
+    const result = await axios.get(`${baseURL}app-info/`)
+        .then((response) => {
+          setAppInfo(response.data.data);
+          console.log('AppInfo')
+          console.log(response.data.data)
+        })
+    } catch (error) {
+        console.error(`Error: ${error}`)
+    }   
+  } */
+  /* GET SERVICES */
+  async function getServices() {
+    try{
+    const result = await axios.get(`${baseURL}service/`)
+        .then((response) => {
+          setServices(response.data.data);
+          console.log('Services')
+          console.log(response.data.data)
+        })
+    } catch (error) {
+        console.error(`Error: ${error}`)
+    }   
+  } 
+  /* GET CATEGORY */
+  async function getCategories() {
+    try{
+    const result = await axios.get(`${baseURL}category/`)
+        .then((response) => {
+          setCategories(response.data.data);
+          console.log('Categories')
+          console.log(response.data.data)
+        })
+    } catch (error) {
+        console.error(`Error: ${error}`)
+    }   
+  } 
 
- 
-  
+  useEffect(() => {
+    //getAppInfo();
+    getCategories();
+    getServices();
+  }, []);
   
   return (
-    <>
-      <Header appInfo={appInfo} services={services} categories={categories}  />
+   <>
+      <Header appInfo={appInfo} services={services} categories={categories} />
       <MainSlider />
       {/* SECTION */}
       <section className='w-[100%] bg-[#403d36] text-white'>
@@ -58,7 +98,7 @@ export default function Home() {
                 at your site to get an immediate understanding of your needs.
               </p>
               
-            {/*  <button 
+             {/*  <button 
                   className='group flex items-center justify-center gap-1 rounded-xl py-[1.5rem] px-[2rem] text-white border hover:bg-gradient-to-br  hover:from-slate-500 hover:to-slate-700'>
                   View More <BsArrowRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
               </button> */}
@@ -72,8 +112,9 @@ export default function Home() {
       </section>
       {/* SERVICES */}
       <ServiceSection services={services} />
-      {/* SECTION */}
-      <section className='w-[100%] bg-[#403d36] text-white'>
+
+       {/* SECTION */}
+       <section className='w-[100%] bg-[#403d36] text-white'>
         <div className="mx-auto w-[90%] py-[4rem] flex lg:flex-row lg:gap-0 gap-3 flex-col items-center justify-start">
             <div className="lg:w-[50%]">
               <div className="w-[100%] rounded-xl aspect-[4/3] bg-slate-600 overflow-hidden">
@@ -95,11 +136,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <ProjectSection projectLatest={projectLatest} />
+
+      {/* SERVICES */}
+      {/* <ProjectSection projectLatest={projectLatest} /> */}
+
+      
       {/* <Subscribe /> */}
-      {/* FOOTER */}
-      <Footer appInfo={appInfo} />
-    </>
+
+     {/* FOOTER */}
+    <Footer />
+
+   </>
   )
 }

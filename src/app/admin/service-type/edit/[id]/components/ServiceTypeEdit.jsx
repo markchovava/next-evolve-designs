@@ -6,17 +6,10 @@ import { useRouter } from 'next/navigation';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
 import { FaRegPlusSquare } from "react-icons/fa";
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header'
 import { CgRemoveR } from "react-icons/cg";
+import { tokenAuth } from '@/api/tokenAuth';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
 
 
 export default function ServiceTypeEdit({ id }) {
@@ -27,6 +20,13 @@ export default function ServiceTypeEdit({ id }) {
     const [type, setType] = useState({});
     const [typeComp, setTypeComp] = useState([{key:0}])
     const [data, setData] = useState([])
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     const addTypeComponent = () => {
         let i =  typeComp.length;

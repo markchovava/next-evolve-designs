@@ -2,17 +2,14 @@
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
 import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
 import { CiCircleRemove } from "react-icons/ci";
 
-const config = {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      'Authorization': `Bearer ${getToken()}`
-  }}
+
 
 export default function UserEdit({ id }) {
     const [data, setData] = useState({});
@@ -22,6 +19,14 @@ export default function UserEdit({ id }) {
     const router = useRouter();
     const [isSubmit, setIsSubmit] = useState(false);
     const formData = new FormData();
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
+
 
     /* GET ROLES */
     async function getRoles() {

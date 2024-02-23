@@ -1,6 +1,5 @@
 "use client"
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
 import { tokenAuth } from '@/api/tokenAuth';
 import Loader from '@/components/Loader';
 import Link from 'next/link'

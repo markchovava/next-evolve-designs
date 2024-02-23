@@ -2,6 +2,7 @@
 
 import AxiosClient from '@/api/axiosClient';
 import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
@@ -10,11 +11,7 @@ import { FaEye } from 'react-icons/fa';
 import { MdDeleteForever, MdEdit } from 'react-icons/md';
 
 
-const config = {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 export default function RoleContent() {
     const [data, setData] = useState({});
@@ -22,6 +19,13 @@ export default function RoleContent() {
     const [prevURL, setPrevURL] = useState()
     const [search, setSearch] = useState('');
     const [searchSubmit, setSearchSubmit] = useState(false);
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     /* PAGINATION */
     async function paginationHandler(url) {

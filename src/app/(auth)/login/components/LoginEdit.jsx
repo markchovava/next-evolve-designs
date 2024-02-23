@@ -4,8 +4,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react';
 import Link from 'next/link'
-import { BsArrowRight, BsChevronRight } from "react-icons/bs";
-import { setToken } from '@/api/token';
+import { BsArrowRight } from "react-icons/bs";
 import { CiSquareRemove } from "react-icons/ci";
 import { tokenRole } from '@/api/tokenRole';
 import { baseURL } from '@/api/baseURL';
@@ -20,16 +19,14 @@ export default function LoginEdit() {
     const [isError, setIsError] = useState(false)
     const [isSubmit, setIsSubmit] = useState(false)
     const [data, setData] = useState({
-    email: '',
-    password: '',
-  });
+      email: '',
+      password: '',
+    });
 
   const config = {
     headers: {
         "Content-Type": "application/json",
         }}
-
-
 
   async function postData() {
     setIsSubmit(false)

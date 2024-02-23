@@ -2,23 +2,24 @@
 import AxiosClient from '@/api/axiosClient';
 import { baseURL } from '@/api/baseURL';
 import { getToken } from '@/api/token';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header'
+import { tokenAuth } from '@/api/tokenAuth';
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
-import { BsArrowRight, BsChevronRight } from "react-icons/bs";
 
 
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-    'Authorization': `Bearer ${getToken()}`
-}}
+
 
 
 export default function ProfileContent() {
     const [data, setData] = useState({})
     const [image, setImage] = useState({})
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${getAuthToken()}`
+      }}
 
     /* GET DATA */
     async function getData() {

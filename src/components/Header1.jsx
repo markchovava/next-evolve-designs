@@ -10,21 +10,57 @@ import { tokenAuth } from "@/api/tokenAuth";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "@/api/baseURL";
-import useSWR from "swr";
-import fetcherWeb from "@/swr/fetcherWeb";
 
- 
+
 
 export default async function Header() {
-    const { getAuthToken } = tokenAuth();
-    const { data: appData, error: appInfoError } = useSWR(`${baseURL}app-info`, fetcherWeb)
-    const { data: serviceData, error: servicesError } = useSWR(`${baseURL}service`, fetcherWeb)
-    const { data: categoryData, error: categoriesError } = useSWR(`${baseURL}category`, fetcherWeb)
-    const appInfo = appData?.data;
-    const services = serviceData?.data;
-    const categories = categoryData?.data;
+  const { getAuthToken } = tokenAuth();
+  const [appInfo, setAppInfo] = useState({});
+  const [services, setServices] = useState([]);
+  const [categories, setCategories] = useState([]);
+  /* GET APPINFO */
+  async function getAppInfo() {
+    try{
+    const result = await axios.get(`${baseURL}app-info/`)
+        .then((response) => {
+          setAppInfo(response.data.data);
+        })
+    } catch (error) {
+        console.error(`Error: ${error}`)
+    }   
+  } 
+  /* GET SERVICES */
+  async function getServices() {
+    try{
+    const result = await axios.get(`${baseURL}service/`)
+        .then((response) => {
+          setServices(response.data.data);
+          console.log('Services')
+          console.log(response.data.data)
+        })
+    } catch (error) {
+        console.error(`Error: ${error}`)
+    }   
+  } 
+  /* GET CATEGORY */
+  async function getCategories() {
+    try{
+    const result = await axios.get(`${baseURL}category/`)
+        .then((response) => {
+          setCategories(response.data.data);
+          console.log('Categories')
+          console.log(response.data.data)
+        })
+    } catch (error) {
+        console.error(`Error: ${error}`)
+    }   
+  } 
 
-
+  useEffect(() => {
+    getAppInfo();
+    getCategories();
+    getServices();
+  }, []);
 
 
     

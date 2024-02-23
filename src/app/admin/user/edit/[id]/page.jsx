@@ -1,19 +1,22 @@
-
+"use client"
 import Footer from '@/components/Footer';
 import Header from '@/components/Header'
 import Link from 'next/link'
 import { BsChevronRight } from "react-icons/bs";
 import UserEdit from './components/UserEdit';
-import getAppInfo from '@/api/getAppInfo';
-import getCategories from '@/api/getCategories';
-import getServices from '@/api/getServices';
+import useSWR from 'swr';
+import { baseURL } from '@/api/baseURL';
+import fetcherWeb from '@/swr/fetcherWeb';
+
 
 
 export default function page({ params: {id} }) {
-  const appInfo = getAppInfo()
-  const services = getServices()
-  const categories = getCategories()
-  
+  const { data: appData, error: appInfoError } = useSWR(`${baseURL}app-info`, fetcherWeb)
+  const { data: serviceData, error: servicesError } = useSWR(`${baseURL}service`, fetcherWeb)
+  const { data: categoryData, error: categoriesError } = useSWR(`${baseURL}category`, fetcherWeb)
+  const appInfo = appData?.data;
+  const services = serviceData?.data;
+  const categories = categoryData?.data;
 
   return (
     <div>

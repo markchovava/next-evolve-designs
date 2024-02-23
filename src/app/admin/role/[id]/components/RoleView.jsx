@@ -1,7 +1,7 @@
 "use client"
 
 import AxiosClient from '@/api/axiosClient';
-import { getToken } from '@/api/token';
+import { tokenAuth } from '@/api/tokenAuth';
 import Loader from '@/components/Loader';
 import Link from 'next/link'
 import { useEffect, useState } from 'react';
@@ -11,10 +11,12 @@ import { useEffect, useState } from 'react';
 export default function RoleView({ id }) {
     const [data, setData] = useState({});
     const [isLoading, setIsLoading] = useState(true)
+    const { getAuthToken } = tokenAuth();
+
     const config = {
-      headers: {
+        headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getToken()}`
+        'Authorization': `Bearer ${getAuthToken()}`
     }}
 
   /* GET DATA */

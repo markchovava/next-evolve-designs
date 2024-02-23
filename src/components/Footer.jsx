@@ -7,24 +7,35 @@ import { FaWhatsappSquare } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa";
 import { baseURL } from "@/api/baseURL";
-import { getToken } from "@/api/token";
+import { useState } from "react";
+import { tokenAuth } from "@/api/tokenAuth";
 
 
 
-export default async function Footer({ appInfo }) {
-    const appInfoData = await JSON.parse(appInfo.value)
-    const authToken = getToken()
+
+
+export default async function Footer({appInfo}) {
+    const { getAuthToken } = tokenAuth();
+    const [data, setData] = useState(appInfo);
+
+   
+
+
 
   return (
     <section className="w-[100%] h-auto bg-[#403d36] text-white">
         <div className="w-[90%] mx-auto py-[4rem] flex lg:flex-row flex-col lg:gap-1 gap-4 items-start justify-between">
             <div className="lg:w-[20%] w-[100%] h-auto flex items-center justify-center flex-col gap-4">
-                <img src={baseURL + appInfoData.data.image} className="object-fill" alt="" />
+                <img src={data?.image ? (baseURL + data.image) : ''} className="object-fill" alt="" />
                 <ul className='flex items-center justify-start gap-3 text-2xl'>
-                    <li><Link href={appInfoData.data.facebook} ><FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                    <li><Link href={appInfoData.data.twitter}><FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                    <li><Link href={appInfoData.data.instagram}><FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
-                    <li><Link href={appInfoData.data.whatsapp}><FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                    <li><Link href={data?.facebook ? data?.facebook : '#'} >
+                        <FaFacebook className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                    <li><Link href={data?.twitter ? data?.twitter : '#'}>
+                        <FaSquareXTwitter className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                    <li><Link href={data?.instagram ? data?.instagram : '#'}>
+                        <FaInstagramSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
+                    <li><Link href={data?.whatsapp ? data?.whatsapp : '#'}>
+                        <FaWhatsappSquare className="hover:scale-110 transition-all ease-in-out" /></Link></li>
                 </ul> 
             </div>
             <div className="lg:w-[30%] w-[100%]">
@@ -44,7 +55,7 @@ export default async function Footer({ appInfo }) {
                             <FaAngleRight className='transition ease-in-out duration-200 group-hover:translate-x-1' />
                             Contact Us</Link>
                     </li>
-                    {!authToken && 
+                    {!getAuthToken() && 
                         <>
                             <li> 
                                 <Link href='/register' className="group flex items-center justify-start gap-2">
@@ -65,31 +76,32 @@ export default async function Footer({ appInfo }) {
                         <FaLocationDot className="mt-1" />
                         <div>
                             <h6 className="font-bold">Address</h6>
-                            {appInfoData.data.address}
+                            {data?.address}
                         </div>
                     </li>
                     <li className="flex items-start justify-start gap-3 ">
                         <MdPhoneIphone className="mt-1"  />
                         <div>
                             <h6 className="font-bold">Phone Number</h6>
-                            {appInfoData.data.phone_number}
+                            {data?.phone_number}
                         </div>
                         </li>
                     <li className="flex items-start justify-start gap-3 ">
                         <MdOutlineMailOutline className="mt-1" /> 
                         <div>
                             <h6 className="font-bold">Email</h6>
-                            {appInfoData.data.email}
+                            {data?.email}
                         </div>
                         </li>
                 </ul>
             </div>
         </div>
         <div className="fixed bottom-[5%] right-[5%] z-20">
-            <Link href={appInfoData.data?.whatsapp}>
+            <Link href={data?.whatsapp ? data?.whatsapp : '#'}>
                 <FaWhatsappSquare className="text-[4rem] text-green-600 border border-white drop-shadow-lg hover:scale-110 transition-all ease-in-out" />
             </Link>
         </div>
+
   </section>
   )
 }

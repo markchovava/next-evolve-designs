@@ -7,6 +7,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { FaRegPlusSquare } from "react-icons/fa";
 import AxiosClient from '@/api/axiosClient';
 import { CgRemoveR } from "react-icons/cg";
+import { tokenAuth } from '@/api/tokenAuth';
 
 const config = {
   headers: {
@@ -22,6 +23,13 @@ export default function ProjectCategoryEdit({ id }) {
     const [category, setCategory] = useState({});
     const [categoryComp, setCategoryComp] = useState([{key:0}])
     const [data, setData] = useState([])
+    const { getAuthToken } = tokenAuth();
+
+    const config = {
+        headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${getAuthToken()}`
+    }}
 
     const addCategoryComponent = () => {
         let i =  categoryComp.length;
